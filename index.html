@@ -13,7 +13,7 @@
     .overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.62) 0%, rgba(0,0,0,.56) 40%, rgba(0,0,0,.68) 100%);z-index:1}
     .content-layer{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column}
     .navbar{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 120px}
-    .nav-left{display:flex;align-items:center;gap:40px}.logo{width:260px;height:25px;display:flex;align-items:center;font-size:20px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+    .nav-left{display:flex;align-items:center;gap:14px}.brand-logo{width:59px;height:50px;opacity:.9;display:block;object-fit:contain}.logo{height:25px;display:flex;align-items:center;font-size:20px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
     .nav-links{display:flex;align-items:center;gap:30px}.nav-item{display:flex;align-items:center;gap:14px;color:#fff;font-size:14px;font-weight:500;text-decoration:none;opacity:.95}
     .chev{width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;opacity:.95}
     .pill-shell{position:relative;border:.6px solid rgba(255,255,255,1);border-radius:999px;padding:1px;display:inline-flex;overflow:visible}
@@ -73,6 +73,7 @@
     <div class="content-layer">
       <header class="navbar">
         <div class="nav-left">
+          <img class="brand-logo" src="./assets/logo.svg" alt="XPAR logo" />
           <div class="logo">XPAR SPECTROMETER</div>
           <nav class="nav-links">
             <a class="nav-item" href="./products.html"><span>Products</span><span class="chev"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
