@@ -43,6 +43,16 @@
     .product-name{font-size:16px;font-weight:600;margin-bottom:6px}
     .product-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,.74)}
 
+    .section-band{width:min(980px,96vw);border:1px solid rgba(255,255,255,.2);border-radius:18px;background:rgba(0,0,0,.42);backdrop-filter:blur(4px);padding:20px 22px;text-align:left}
+    .section-band + .section-band{margin-top:16px}
+    .section-title{font-size:18px;font-weight:600;letter-spacing:.01em;margin-bottom:8px}
+    .section-sub{font-size:13px;line-height:1.7;color:rgba(255,255,255,.75);margin-bottom:14px}
+    .solution-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .solution-item{border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px;background:rgba(255,255,255,.03)}
+    .solution-name{font-size:15px;font-weight:600;margin-bottom:6px}
+    .solution-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,.74);margin-bottom:10px}
+    .text-link{display:inline-flex;align-items:center;color:#fff;text-decoration:none;font-size:12px;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,.38);padding-bottom:2px}
+
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.62);z-index:30;padding:16px}
     .modal.show{display:flex}
     .modal-card{width:min(420px,96vw);border:1px solid rgba(255,255,255,.2);background:#0f0f0f;color:#fff;border-radius:18px;padding:18px}
@@ -53,7 +63,7 @@
     .modal-btn.primary{background:#fff;color:#000;border-color:#fff}
 
     @media (max-width:960px){.navbar{padding:20px 24px}.nav-links{display:none}.logo{width:auto;font-size:18px}.hero-body{padding-top:220px}h1{font-size:42px}}
-    @media (max-width:768px){.hero-body{padding-top:200px;padding-bottom:102px}h1{font-size:36px;max-width:92%}.subtitle{max-width:92%;font-size:15px}.hero-stack{gap:32px}.pill-inner{padding:11px 22px}.query-row{flex-direction:column;border-radius:18px;padding:10px}.query-input{width:100%;text-align:center}.query-btn{width:100%}.product-band{padding:14px}.product-grid{grid-template-columns:1fr}}
+    @media (max-width:768px){.hero-body{padding-top:200px;padding-bottom:102px}h1{font-size:36px;max-width:92%}.subtitle{max-width:92%;font-size:15px}.hero-stack{gap:32px}.pill-inner{padding:11px 22px}.query-row{flex-direction:column;border-radius:18px;padding:10px}.query-input{width:100%;text-align:center}.query-btn{width:100%}.product-band{padding:14px}.product-grid{grid-template-columns:1fr}.section-band{padding:14px}.solution-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -100,6 +110,50 @@
               <article class="product-item">
                 <div class="product-name">XPAR-100</div>
                 <div class="product-desc">Compact model for routine field checks. Fast to deploy, easy to standardize across teams, and ideal for everyday spectral verification with dependable accuracy.</div>
+              </article>
+            </div>
+          </div>
+
+          <div class="section-band">
+            <div class="section-title">Solutions by Use Case</div>
+            <div class="section-sub">Move from raw spectral readings to practical actions with purpose-built workflows for greenhouse and vertical farming teams.</div>
+            <div class="solution-grid">
+              <article class="solution-item">
+                <div class="solution-name">Greenhouse Optimization</div>
+                <div class="solution-desc">Validate fixture output, compare zones, and tune light strategy by crop stage for more consistent growth results.</div>
+                <a class="text-link" href="./applications.html">LEARN MORE</a>
+              </article>
+              <article class="solution-item">
+                <div class="solution-name">Vertical Farm Standardization</div>
+                <div class="solution-desc">Keep multi-rack light profiles aligned across sites and shifts with repeatable measurement routines.</div>
+                <a class="text-link" href="./applications.html">LEARN MORE</a>
+              </article>
+              <article class="solution-item">
+                <div class="solution-name">Spectral Diagnostics & QA</div>
+                <div class="solution-desc">Detect spectral drift early, reduce quality variance, and support data-driven maintenance decisions.</div>
+                <a class="text-link" href="./applications.html">LEARN MORE</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="section-band">
+            <div class="section-title">Service & Lifecycle Support</div>
+            <div class="section-sub">From deployment planning to recalibration cycles, we help your team keep measurements reliable over the full equipment lifecycle.</div>
+            <div class="solution-grid">
+              <article class="solution-item">
+                <div class="solution-name">Deployment Consulting</div>
+                <div class="solution-desc">Define measurement points, SOPs, and reporting logic that fit your facility and goals.</div>
+                <a class="text-link" href="./support.html">CONTACT TEAM</a>
+              </article>
+              <article class="solution-item">
+                <div class="solution-name">Calibration & Recalibration</div>
+                <div class="solution-desc">Maintain confidence in long-run data quality with scheduled calibration service workflows.</div>
+                <a class="text-link" href="./support.html">REQUEST SERVICE</a>
+              </article>
+              <article class="solution-item">
+                <div class="solution-name">Technical Response</div>
+                <div class="solution-desc">Get support for data interpretation, troubleshooting, and best-practice operating guidance.</div>
+                <a class="text-link" href="./support.html">GET SUPPORT</a>
               </article>
             </div>
           </div>
