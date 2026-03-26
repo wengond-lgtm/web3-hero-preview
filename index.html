@@ -35,6 +35,14 @@
     .query-btn{border:none;border-radius:999px;background:#fff;color:#000;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer}
     .query-tip{font-size:12px;color:rgba(255,255,255,.6)}
 
+    .product-band{width:min(980px,96vw);margin-top:4px;border:1px solid rgba(255,255,255,.2);border-radius:18px;background:rgba(0,0,0,.42);backdrop-filter:blur(4px);padding:18px 20px;text-align:left}
+    .product-band-title{font-size:18px;font-weight:600;letter-spacing:.01em;margin-bottom:8px}
+    .product-band-sub{font-size:13px;line-height:1.7;color:rgba(255,255,255,.75);margin-bottom:14px}
+    .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .product-item{border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px;background:rgba(255,255,255,.03)}
+    .product-name{font-size:16px;font-weight:600;margin-bottom:6px}
+    .product-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,.74)}
+
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.62);z-index:30;padding:16px}
     .modal.show{display:flex}
     .modal-card{width:min(420px,96vw);border:1px solid rgba(255,255,255,.2);background:#0f0f0f;color:#fff;border-radius:18px;padding:18px}
@@ -45,7 +53,7 @@
     .modal-btn.primary{background:#fff;color:#000;border-color:#fff}
 
     @media (max-width:960px){.navbar{padding:20px 24px}.nav-links{display:none}.logo{width:auto;font-size:18px}.hero-body{padding-top:220px}h1{font-size:42px}}
-    @media (max-width:768px){.hero-body{padding-top:200px;padding-bottom:102px}h1{font-size:36px;max-width:92%}.subtitle{max-width:92%;font-size:15px}.hero-stack{gap:32px}.pill-inner{padding:11px 22px}.query-row{flex-direction:column;border-radius:18px;padding:10px}.query-input{width:100%;text-align:center}.query-btn{width:100%}}
+    @media (max-width:768px){.hero-body{padding-top:200px;padding-bottom:102px}h1{font-size:36px;max-width:92%}.subtitle{max-width:92%;font-size:15px}.hero-stack{gap:32px}.pill-inner{padding:11px 22px}.query-row{flex-direction:column;border-radius:18px;padding:10px}.query-input{width:100%;text-align:center}.query-btn{width:100%}.product-band{padding:14px}.product-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -79,6 +87,21 @@
               <button id="queryBtn" class="query-btn">Find PDF</button>
             </div>
             <div class="query-tip">Enter your sensor serial number to retrieve the matching calibration PDF (case-insensitive).</div>
+          </div>
+
+          <div class="product-band">
+            <div class="product-band-title">Product Line Overview</div>
+            <div class="product-band-sub">Our XPAR series is designed for greenhouse and vertical farming teams that need stable, repeatable spectral data in daily operations. Choose the model that matches your deployment scale and precision workflow.</div>
+            <div class="product-grid">
+              <article class="product-item">
+                <div class="product-name">XPAR-200</div>
+                <div class="product-desc">Flagship model for advanced measurement tasks. Offers broader operating flexibility, richer analysis output, and stronger long-run consistency for multi-zone production environments.</div>
+              </article>
+              <article class="product-item">
+                <div class="product-name">XPAR-100</div>
+                <div class="product-desc">Compact model for routine field checks. Fast to deploy, easy to standardize across teams, and ideal for everyday spectral verification with dependable accuracy.</div>
+              </article>
+            </div>
           </div>
 
           <a href="./products.html" class="pill-shell pill-light"><span class="pill-inner">Explore Product</span></a>
