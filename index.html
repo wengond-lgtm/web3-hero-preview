@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance Photon</title>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <style>
+    :root{--bg:#000000;--white:#ffffff;}*{box-sizing:border-box;margin:0;padding:0}
+    html,body{width:100%;height:100%;background:var(--bg);color:var(--white);font-family:"General Sans",sans-serif}
+    .hero{position:relative;min-height:100vh;overflow:hidden;background:#000}
+    .bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 4%;transform:scale(1.08);filter:brightness(.72) saturate(.88);z-index:0}
+    .overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.62) 0%, rgba(0,0,0,.56) 40%, rgba(0,0,0,.68) 100%);z-index:1}
+    .content-layer{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column}
+    .navbar{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 120px}
+    .nav-left{display:flex;align-items:center;gap:40px}.logo{width:260px;height:25px;display:flex;align-items:center;font-size:20px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+    .nav-links{display:flex;align-items:center;gap:30px}.nav-item{display:flex;align-items:center;gap:14px;color:#fff;font-size:14px;font-weight:500;text-decoration:none;opacity:.95}
+    .chev{width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;opacity:.95}
+    .pill-shell{position:relative;border:.6px solid rgba(255,255,255,1);border-radius:999px;padding:1px;display:inline-flex;overflow:visible}
+    .pill-shell::before{content:"";position:absolute;top:-8px;left:24%;width:52%;height:16px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.48),rgba(255,255,255,0));filter:blur(8px);pointer-events:none}
+    .pill-inner{border-radius:999px;padding:11px 29px;font-size:14px;font-weight:500;line-height:1;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;white-space:nowrap}
+    .pill-dark .pill-inner{background:#000;color:#fff}.pill-light{border-color:rgba(255,255,255,.85)}.pill-light .pill-inner{background:#fff;color:#000}
+    .hero-body{flex:1;display:flex;justify-content:flex-start;align-items:flex-start;padding:280px 24px 102px}
+    .hero-stack{width:100%;max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:40px;text-align:center}
+    .badge{border-radius:20px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);padding:8px 14px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;line-height:1.2;backdrop-filter:blur(4px)}
+    .dot{width:4px;height:4px;border-radius:999px;background:#fff;flex:none}.badge-muted{opacity:.6}.badge-strong{opacity:1}
+    .heading-wrap{display:flex;flex-direction:column;align-items:center;gap:24px}
+    h1{max-width:613px;font-size:56px;font-weight:500;line-height:1.28;letter-spacing:-.01em;background:linear-gradient(144.5deg,rgba(255,255,255,1) 28%,rgba(0,0,0,0) 115%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .subtitle{max-width:680px;font-size:15px;font-weight:400;line-height:1.6;color:rgba(255,255,255,.7)}
+
+        .query-box{width:min(680px,92vw);display:flex;flex-direction:column;gap:12px;align-items:center}
+    .query-row{width:100%;display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px}
+    .query-input{flex:1;background:transparent;border:none;outline:none;color:#fff;padding:10px 14px;font-size:14px;letter-spacing:.06em}
+    .query-input::placeholder{color:rgba(255,255,255,.45)}
+    .query-btn{border:none;border-radius:999px;background:#fff;color:#000;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer}
+    .query-tip{font-size:12px;color:rgba(255,255,255,.6)}
+
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.62);z-index:30;padding:16px}
+    .modal.show{display:flex}
+    .modal-card{width:min(420px,96vw);border:1px solid rgba(255,255,255,.2);background:#0f0f0f;color:#fff;border-radius:18px;padding:18px}
+    .modal-title{font-size:18px;font-weight:600;margin-bottom:8px}
+    .modal-desc{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:16px;line-height:1.5}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end}
+    .modal-btn{border:1px solid rgba(255,255,255,.2);background:#1a1a1a;color:#fff;border-radius:999px;padding:9px 14px;cursor:pointer;text-decoration:none}
+    .modal-btn.primary{background:#fff;color:#000;border-color:#fff}
+
+    @media (max-width:960px){.navbar{padding:20px 24px}.nav-links{display:none}.logo{width:auto;font-size:18px}.hero-body{padding-top:220px}h1{font-size:42px}}
+    @media (max-width:768px){.hero-body{padding-top:200px;padding-bottom:102px}h1{font-size:36px;max-width:92%}.subtitle{max-width:92%;font-size:15px}.hero-stack{gap:32px}.pill-inner{padding:11px 22px}.query-row{flex-direction:column;border-radius:18px;padding:10px}.query-input{width:100%;text-align:center}.query-btn{width:100%}}
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <video class="bg-video" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_024928_1efd0b0d-6c02-45a8-8847-1030900c4f63.mp4" autoplay muted loop playsinline preload="auto"></video>
+    <div class="overlay"></div>
+    <div class="content-layer">
+      <header class="navbar">
+        <div class="nav-left">
+          <div class="logo">PERFORMANCE PHOTON</div>
+          <nav class="nav-links">
+            <a class="nav-item" href="./products.html"><span>Products</span><span class="chev"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <a class="nav-item" href="./applications.html"><span>Applications</span><span class="chev"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <a class="nav-item" href="./technology.html"><span>Technology</span><span class="chev"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <a class="nav-item" href="./support.html"><span>Support</span><span class="chev"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          </nav>
+        </div>
+        <a href="./support.html" class="pill-shell pill-dark"><span class="pill-inner">Contact Sales</span></a>
+      </header>
+      <div class="hero-body">
+        <div class="hero-stack">
+          <div class="badge"><span class="dot"></span><span class="badge-muted">Precision spectral analysis for</span><span class="badge-strong"> modern greenhouse growers</span></div>
+          <div class="heading-wrap">
+            <h1>Wide Spectrum Insight for Better Crop Performance</h1>
+            <p class="subtitle">Performance Photon delivers full-spectrum visibility from 350–1050nm, 1nm spectral resolution, advanced metrics analysis, and user-defined wavelength ranges—helping growers optimize lighting strategy across every growth stage.</p>
+          </div>
+
+          <div class="query-box">
+            <div class="query-row">
+              <input id="codeInput" class="query-input" type="text" maxlength="16" placeholder="Enter serial number (e.g. Q124332)" />
+              <button id="queryBtn" class="query-btn">Find PDF</button>
+            </div>
+            <div class="query-tip">Enter your sensor serial number to retrieve the matching calibration PDF (case-insensitive).</div>
+          </div>
+
+          <a href="./products.html" class="pill-shell pill-light"><span class="pill-inner">Explore Product</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="resultModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-title" id="modalTitle">Lookup Result</div>
+      <div class="modal-desc" id="modalDesc">-</div>
+      <div class="modal-actions">
+        <button id="closeModalBtn" class="modal-btn">Close</button>
+        <a id="downloadBtn" class="modal-btn primary" href="#" download>Download PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const codeToPdfMap = {"Q124332":"./files/Q124332.pdf"};
+    const codeInput = document.getElementById('codeInput');
+    const queryBtn = document.getElementById('queryBtn');
+    const resultModal = document.getElementById('resultModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    function showModal(ok, code, url) {
+      resultModal.classList.add('show');
+      resultModal.setAttribute('aria-hidden', 'false');
+      if (ok) {
+        modalTitle.textContent = 'Match Found';
+        modalDesc.textContent = `Serial ${code} is matched. Click Download PDF to continue.`;
+        downloadBtn.style.display = 'inline-flex';
+        downloadBtn.href = url;
+        downloadBtn.setAttribute('download', `${code}.pdf`);
+      } else {
+        modalTitle.textContent = 'No File Found';
+        modalDesc.textContent = `Serial ${code || '(empty)'} was not matched. Please verify and try again.`;
+        downloadBtn.style.display = 'none';
+      }
+    }
+
+    function closeModal() {
+      resultModal.classList.remove('show');
+      resultModal.setAttribute('aria-hidden', 'true');
+    }
+
+    function handleQuery() {
+      const raw = (codeInput.value || '').trim();
+      const code = raw.toUpperCase();
+      const valid = /^[A-Z0-9]{6,16}$/.test(code);
+      if (!valid) return showModal(false, raw || '(empty)');
+      const url = codeToPdfMap[code];
+      if (!url) return showModal(false, code);
+      showModal(true, code, url);
+    }
+
+    queryBtn.addEventListener('click', handleQuery);
+    codeInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleQuery(); });
+    closeModalBtn.addEventListener('click', closeModal);
+    resultModal.addEventListener('click', (e) => { if (e.target === resultModal) closeModal(); });
+  </script>
+</body>
+</html>

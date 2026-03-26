@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - Performance Photon</title>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"General Sans",sans-serif;background:#000;color:#fff}
+    .page{position:relative;min-height:100vh;overflow:hidden}
+    .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 4%;transform:scale(1.08);filter:brightness(.72) saturate(.88)}
+    .ov{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.62) 0%, rgba(0,0,0,.56) 40%, rgba(0,0,0,.68) 100%)}
+    .layer{position:relative;z-index:2;min-height:100vh;padding:20px 120px 70px}
+    .top{display:flex;justify-content:space-between;align-items:center}
+    .logo{font-weight:600;letter-spacing:.03em}
+    .nav a{color:#fff;text-decoration:none;font-size:14px;margin-left:22px;opacity:.92}
+    .hero{padding-top:90px;max-width:980px}
+    h1{font-size:48px;line-height:1.2;font-weight:600;max-width:820px}
+    .sub{margin-top:14px;color:rgba(255,255,255,.76);line-height:1.7;max-width:900px}
+    .panel{margin-top:28px;border:1px solid rgba(255,255,255,.2);background:rgba(10,10,10,.52);backdrop-filter:blur(4px);border-radius:14px;padding:16px}
+    .panel p,.panel li{color:rgba(255,255,255,.82);line-height:1.75}
+    .panel h3{margin:0 0 8px;font-size:20px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .card{border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:14px;background:rgba(255,255,255,.03)}
+    
+    .btn{display:inline-block;margin-top:16px;padding:10px 16px;border-radius:999px;background:#fff;color:#000;text-decoration:none;font-weight:600}
+    table{width:100%;border-collapse:collapse}.panel th,.panel td{border:1px solid rgba(255,255,255,.18);padding:10px;text-align:left}
+    .panel th{background:rgba(255,255,255,.07)}
+    input,textarea{width:100%;margin-top:6px;background:#0f0f0f;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px;color:#fff}
+    label{display:block;margin-top:10px;font-size:14px}
+    button{margin-top:14px;border:none;border-radius:999px;padding:10px 14px;background:#fff;color:#000;font-weight:600;cursor:pointer}
+    @media (max-width:960px){.layer{padding:20px 24px 60px}.nav{display:none}h1{font-size:36px}.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <section class="page">
+    <video class="bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_024928_1efd0b0d-6c02-45a8-8847-1030900c4f63.mp4" autoplay muted loop playsinline preload="auto"></video>
+    <div class="ov"></div>
+    <div class="layer">
+      <div class="top">
+        <div class="logo">PERFORMANCE PHOTON</div>
+        <div class="nav">
+          <a href="./index.html">Home</a>
+          <a href="./products.html">Products</a>
+          <a href="./applications.html">Applications</a>
+          <a href="./technology.html">Technology</a>
+          <a href="./support.html">Support</a>
+        </div>
+      </div>
+      <div class="hero">
+        <h1>Product Overview: Precision Spectral Tools</h1>
+        <p class="sub">Designed for controlled environment agriculture with reliable, actionable spectral intelligence.</p>
+        <div class="panel"><div class='grid'>
+  <div class='card'><h3>Wide Spectrum Coverage</h3><p>350–1050nm visibility to evaluate and optimize lighting across all growth stages.</p></div>
+  <div class='card'><h3>Compact, Strong Performance</h3><p>Enhanced micro spectro-chip with high accuracy in a smaller and field-ready body.</p></div>
+  <div class='card'><h3>Advanced Metrics Analysis</h3><p>Converts complex light data into practical insights for growers and technical teams.</p></div>
+  <div class='card'><h3>Custom Wavelength Range</h3><p>Define your own wavelength windows for crop-specific and scenario-specific analysis.</p></div>
+</div></div>
+        <a class="btn" href="./index.html">Back to Home</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
