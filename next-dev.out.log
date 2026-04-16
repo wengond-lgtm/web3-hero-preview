@@ -1,0 +1,28 @@
+
+> xpar-website@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.5s
+ ○ Compiling / ...
+ ✓ Compiled / in 5s (1272 modules)
+ GET / 200 in 5287ms
+ GET / 200 in 49ms
+ ✓ Compiled /_not-found in 327ms (1275 modules)
+ POST /api/ext/activate 404 in 400ms
+ GET / 200 in 136ms
+ GET / 200 in 53ms
+ POST /api/ext/activate 404 in 60ms
+ ✓ Compiled /resources in 476ms (1263 modules)
+ ✓ Compiled /about in 220ms (1265 modules)
+ ✓ Compiled /products in 225ms (1267 modules)
+ ✓ Compiled /support/certificate in 241ms (1269 modules)
+ GET /about 200 in 87ms
+ POST /api/ext/activate 404 in 25ms
+ GET / 200 in 53ms
+ POST /api/ext/activate 404 in 27ms
+ ○ Compiling /resources/[slug] ...
+ ✓ Compiled /resources/[slug] in 544ms (1276 modules)

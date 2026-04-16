@@ -1,0 +1,27 @@
+"use client";
+
+import { useState, useEffect, RefObject } from "react";
+
+export function useInView(ref: RefObject<Element | null>, threshold = 0.15): boolean {
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold }
+    );
+
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [ref, threshold]);
+
+  return inView;
+}
