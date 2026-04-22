@@ -48,7 +48,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg-base);
   color: var(--text-body);
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 17px;
   font-weight: 500;
   line-height: 1.65;
@@ -56,7 +56,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   color: var(--text-primary);
   line-height: 1.15;
   letter-spacing: 0.02em;
@@ -115,7 +115,7 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: var(--text-primary);
@@ -134,7 +134,7 @@ input, textarea, select { font-family: inherit; }
 
 .brand-suffix {
   color: var(--text-heading);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.4px;
@@ -144,7 +144,7 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 32px;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
 }
 
@@ -192,7 +192,7 @@ input, textarea, select { font-family: inherit; }
   border-radius: 8px;
   background: color-mix(in srgb, var(--accent, #818CF8) 12%, transparent);
   border: 1px solid color-mix(in srgb, var(--accent, #818CF8) 28%, transparent);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 11px;
   font-weight: 700;
   color: var(--accent, #818CF8);
@@ -205,7 +205,7 @@ input, textarea, select { font-family: inherit; }
   border-radius: 6px;
   background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
   color: #fff;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 13px;
   font-weight: 600;
   border: none;
@@ -245,7 +245,7 @@ input, textarea, select { font-family: inherit; }
   gap: 4px;
 }
 .mobile-link {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 24px;
   font-weight: 600;
   color: var(--text-muted);
@@ -261,7 +261,7 @@ input, textarea, select { font-family: inherit; }
   display: inline-block;
   padding: 13px 32px;
   border-radius: 8px;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.2px;
@@ -295,7 +295,7 @@ input, textarea, select { font-family: inherit; }
   border-radius: 8px;
   border: 1px solid var(--accent, var(--indigo));
   color: var(--accent, var(--indigo));
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 14px;
   font-weight: 600;
   transition: all 0.3s;
@@ -344,7 +344,7 @@ input, textarea, select { font-family: inherit; }
   border-radius: 20px;
   margin-bottom: 20px;
   font-size: 11px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   border: 1px solid;
@@ -380,7 +380,7 @@ input, textarea, select { font-family: inherit; }
   margin-top: 4px;
 }
 .footer-title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: var(--text-muted);
@@ -502,7 +502,7 @@ input, textarea, select { font-family: inherit; }
   border: 1px solid rgba(99,102,241,0.3);
   background: rgba(99,102,241,0.08);
   font-size: 12px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   color: var(--indigo-pale);
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -620,7 +620,7 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: var(--text-dim);
 }
@@ -641,7 +641,7 @@ input, textarea, select { font-family: inherit; }
   gap: 4px;
 }
 .stat-card strong {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 22px;
   font-weight: 700;
   color: #C7D2FE;
@@ -705,7 +705,7 @@ input, textarea, select { font-family: inherit; }
   flex-shrink: 0;
 }
 .feature-num {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
   color: var(--text-dim);
   font-weight: 500;
@@ -775,7 +775,7 @@ input, textarea, select { font-family: inherit; }
   background: var(--accent-bg, rgba(99,102,241,0.06));
   border: 1px solid var(--accent-border, rgba(99,102,241,0.2));
   font-size: 10px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   color: var(--accent, var(--indigo-light));
   letter-spacing: 1.5px;
 }
@@ -800,7 +800,7 @@ input, textarea, select { font-family: inherit; }
   gap: 12px;
 }
 .device-screen span {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 28px;
   font-weight: 700;
   color: var(--accent, var(--indigo-light));
@@ -823,7 +823,7 @@ input, textarea, select { font-family: inherit; }
   flex-direction: column;
 }
 .product-model {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
   color: var(--accent, var(--cyan));
   letter-spacing: 1px;
@@ -1002,7 +1002,7 @@ input, textarea, select { font-family: inherit; }
   gap: 8px;
 }
 .phone-screen span, .phone-screen strong {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Syne', sans-serif;
   color: var(--text-muted);
   font-size: 12px;
 }
@@ -1038,7 +1038,7 @@ input, textarea, select { font-family: inherit; }
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 12px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
 }
 .spec-group > div { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
 .spec-group dl {
@@ -1051,7 +1051,7 @@ input, textarea, select { font-family: inherit; }
 .spec-group dl:last-child { border-bottom: none; }
 .spec-group dt { font-size: 14px; color: var(--text-muted); }
 .spec-group dd {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 14px;
   color: var(--text-heading);
 }
@@ -1079,7 +1079,7 @@ input, textarea, select { font-family: inherit; }
   padding: 24px;
 }
 .placeholder-panel span {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 13px;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -1096,7 +1096,7 @@ input, textarea, select { font-family: inherit; }
   border-radius: 6px;
   border: 1px solid rgba(6,182,212,0.25);
   background: rgba(6,182,212,0.06);
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: #67E8F9;
   letter-spacing: 1px;
@@ -1120,7 +1120,7 @@ input, textarea, select { font-family: inherit; }
   font-size: 13px;
   font-weight: 500;
   color: var(--text-muted);
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 .form-field em { font-size: 12px; color: #F87171; font-style: normal; }
 .form-field input,
@@ -1164,7 +1164,7 @@ input, textarea, select { font-family: inherit; }
 }
 .contact-card > p { font-size: 14px; line-height: 1.65; color: var(--text-muted); margin-bottom: 24px; }
 .contact-card dl { display: flex; flex-direction: column; gap: 16px; }
-.contact-card dt { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); font-family: 'Share Tech Mono', monospace; margin-bottom: 3px; }
+.contact-card dt { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); font-family: 'IBM Plex Mono', monospace; margin-bottom: 3px; }
 .contact-card dd { font-size: 14px; color: var(--text-body); }
 
 /* ─── Support pages ─────────────────────────────────────────── */
@@ -1185,7 +1185,7 @@ input, textarea, select { font-family: inherit; }
   border-radius: 6px;
   color: var(--text-muted);
   font-size: 12px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   transition: all 0.2s;
   cursor: pointer;
 }
@@ -1200,7 +1200,7 @@ input, textarea, select { font-family: inherit; }
 .result-panel p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 .result-panel h2 { font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
 .result-panel dl { display: flex; flex-direction: column; gap: 12px; }
-.result-panel dt { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); font-family: 'Share Tech Mono', monospace; }
+.result-panel dt { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); font-family: 'IBM Plex Mono', monospace; }
 .result-panel dd { font-size: 14px; color: var(--text-body); }
 .result-panel a { color: var(--cyan); text-decoration: underline; }
 .result-badge {
@@ -1209,7 +1209,7 @@ input, textarea, select { font-family: inherit; }
   border-radius: 20px;
   border: 1px solid rgba(16,185,129,0.3);
   background: rgba(16,185,129,0.08);
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: var(--green-light);
   letter-spacing: 1px;
@@ -1229,7 +1229,7 @@ input, textarea, select { font-family: inherit; }
   border: 1px solid var(--border);
   background: transparent;
   color: var(--text-muted);
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -1255,7 +1255,7 @@ input, textarea, select { font-family: inherit; }
 }
 .download-row:hover { background: var(--bg-card-hover); border-color: rgba(148,163,184,0.15); }
 .download-type {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -1302,14 +1302,14 @@ input, textarea, select { font-family: inherit; }
   border-radius: 4px;
   border: 1px solid rgba(236,72,153,0.3);
   background: rgba(236,72,153,0.08);
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
   color: var(--pink-light);
   letter-spacing: 1px;
   width: fit-content;
 }
 .article-meta {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: var(--text-dim);
   letter-spacing: 0.5px;
