@@ -401,7 +401,7 @@ function SpectralWave() {
       });
 
       // ── Axis labels ─────────────────────────────────────────
-      ctx.font = "9px 'IBM Plex Mono', monospace";
+      ctx.font = "9px 'JetBrains Mono', monospace";
       ctx.textAlign = "center";
       [400, 500, 600, 700, 800, 900, 1000].forEach(nm => {
         ctx.fillStyle = nm % 200 === 0 ? "rgba(148,163,184,0.7)" : "rgba(148,163,184,0.38)";
@@ -541,7 +541,7 @@ function SpectralWave() {
         // readout tag (wavelength + intensity)
         const tagX = Math.min(Math.max(sx, pad.l + 36), pad.l + cw - 36);
         const label = `${scanNm} nm  ${intensity}%`;
-        ctx.font = "bold 13px 'IBM Plex Mono', monospace";
+        ctx.font = "bold 13px 'JetBrains Mono', monospace";
         const tw = ctx.measureText(label).width;
         ctx.fillStyle = "rgba(6,11,36,0.82)";
         ctx.beginPath();
