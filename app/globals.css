@@ -759,7 +759,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .device-mock {
-  height: 300px;
+  height: 260px;
   position: relative;
   background: radial-gradient(ellipse at 50% 80%, var(--accent-bg, rgba(99,102,241,0.06)), transparent 70%);
   display: flex;
