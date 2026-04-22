@@ -722,8 +722,11 @@ function DeviceMock({ model, badge }: { model: string; badge?: string }) {
   return (
     <div className="device-mock">
       {badge ? <span className="device-badge">{badge}</span> : null}
-      <div className="device-shell"><div className="device-screen"><span>{model}</span><SpectrumLine /></div></div>
-      <span className="device-reflection" />
+      <img
+        className="device-product-img"
+        src={`/${model}.jpg`}
+        alt={`XPAR ${model}`}
+      />
     </div>
   );
 }
