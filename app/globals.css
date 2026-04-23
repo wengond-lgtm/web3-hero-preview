@@ -997,8 +997,8 @@ input, textarea, select { font-family: inherit; }
   align-items: center;
 }
 .phone-mock {
-  width: 200px;
-  height: 380px;
+  width: 240px;
+  height: 456px;
   display: flex;
   align-items: center;
   justify-content: center;
