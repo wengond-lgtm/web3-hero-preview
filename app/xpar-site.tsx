@@ -936,7 +936,7 @@ function AboutPage() {
         <div className="container about-stack">
           {blocks.map((block, index) => (
             <Reveal className={index % 2 === 0 ? "about-row" : "about-row reverse"} key={block.title}>
-              <div className="placeholder-panel"><span>{block.label}</span><SpectrumLine /></div>
+              <div className="about-img-wrap"><img className="about-img" src={`/${block.label}.png`} alt={block.label} /></div>
               <div><span className="section-pill cyan">{block.label}</span><h2 className="section-title compact">{block.title}</h2><p className="muted-copy">{block.body}</p><div className="badge-row"><span>NIST</span><span>SI</span><span>CAL-PAR-001</span></div></div>
             </Reveal>
           ))}

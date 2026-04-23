@@ -1102,6 +1102,23 @@ input, textarea, select { font-family: inherit; }
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.about-img-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  flex-shrink: 0;
+}
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s var(--ease);
+}
+.about-img-wrap:hover .about-img {
+  transform: scale(1.04);
+}
 .badge-row {
   display: flex;
   gap: 10px;
