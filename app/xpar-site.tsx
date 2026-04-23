@@ -871,7 +871,7 @@ function AppShowcase({ product }: { product: Product }) {
   return (
     <section className="section app-section">
       <div className="container app-layout">
-        <Reveal><div className="phone-mock"><div className="phone-screen"><span>XPAR Analyzer</span><strong>{product.model}</strong><SpectrumLine /><div className="phone-bars"><span /><span /><span /><span /></div></div></div></Reveal>
+        <Reveal><div className="phone-mock"><img className="phone-product-img" src="/x200phone.png" alt="XPAR Analyzer App on X200" /></div></Reveal>
         <Reveal delay={0.1}>
           <span className="section-pill cyan">XPAR Analyzer App</span>
           <h2 className="section-title compact">Measurement workflow, organized.</h2>
