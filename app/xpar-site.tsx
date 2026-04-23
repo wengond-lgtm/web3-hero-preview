@@ -580,85 +580,105 @@ function SpectralWave() {
   return <canvas className="spectral-canvas" ref={canvasRef} aria-label="Spectral measurement visualization — hover to inspect wavelength" />;
 }
 
-function CosineResponseChart() {
+function SpectralResponseChart() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
+    const ctx = canvas?.getContext('2d');
     if (!canvas || !ctx) return;
-    const draw = () => {
-      const width = canvas.clientWidth || 420;
-      const height = canvas.clientHeight || 240;
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, width, height);
-      const pad = { left: 44, right: 18, top: 18, bottom: 44 };
-      const cw = width - pad.left - pad.right;
-      const ch = height - pad.top - pad.bottom;
-      ctx.strokeStyle = "rgba(148, 163, 184, 0.12)";
-      ctx.lineWidth = 1;
-      for (let i = 0; i <= 4; i += 1) {
-        const y = pad.top + (ch / 4) * i;
-        ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(width - pad.right, y); ctx.stroke();
-      }
-      for (let i = 0; i <= 3; i += 1) {
-        const x = pad.left + (cw / 3) * i;
-        ctx.beginPath(); ctx.moveTo(x, pad.top); ctx.lineTo(x, height - pad.bottom); ctx.stroke();
-      }
-      ctx.fillStyle = "#4B5563";
-      ctx.font = "10px 'JetBrains Mono', monospace";
-      ctx.textAlign = "center";
-      [0, 30, 60, 90].forEach((deg) => ctx.fillText(`${deg}\u00B0`, pad.left + (deg / 90) * cw, height - 18));
-      ctx.textAlign = "right";
-      [0, 50, 100].forEach((value) => ctx.fillText(`${value}%`, pad.left - 8, pad.top + ch * (1 - value / 100) + 3));
-      ctx.setLineDash([6, 5]);
-      ctx.strokeStyle = "rgba(148, 163, 184, 0.5)";
-      ctx.beginPath();
-      for (let deg = 0; deg <= 90; deg += 1) {
-        const x = pad.left + (deg / 90) * cw;
-        const y = pad.top + ch * (1 - Math.cos((deg * Math.PI) / 180));
-        if (deg === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.strokeStyle = "#06B6D4";
-      ctx.lineWidth = 2.2;
-      ctx.beginPath();
-      for (let deg = 0; deg <= 90; deg += 1) {
-        const x = pad.left + (deg / 90) * cw;
-        const ideal = Math.cos((deg * Math.PI) / 180);
-        const deviation = Math.sin(deg * 0.16) * 0.012 - (deg / 90) * 0.01;
-        const y = pad.top + ch * (1 - Math.max(0, ideal + deviation));
-        if (deg === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-      const deg75x = pad.left + (75 / 90) * cw;
-      const cos75 = Math.cos((75 * Math.PI) / 180);
-      const y75top = pad.top + ch * (1 - cos75 * 1.05);
-      const y75bottom = pad.top + ch * (1 - cos75 * 0.95);
-      ctx.fillStyle = "rgba(6, 182, 212, 0.1)";
-      ctx.fillRect(deg75x - 12, y75top, 24, y75bottom - y75top);
-      ctx.strokeStyle = "rgba(6, 182, 212, 0.35)";
-      ctx.strokeRect(deg75x - 12, y75top, 24, y75bottom - y75top);
-      ctx.fillStyle = "#06B6D4";
-      ctx.font = "10px 'JetBrains Mono', monospace";
-      ctx.textAlign = "left";
-      ctx.fillText("\u00B15%", deg75x + 16, (y75top + y75bottom) / 2 + 3);
-      ctx.font = "11px 'IBM Plex Sans', sans-serif";
-      ctx.fillStyle = "#64748B";
-      ctx.fillText("Ideal cosine", pad.left + 10, height - 32);
-      ctx.fillStyle = "#06B6D4";
-      ctx.fillText("XPAR response", pad.left + 120, height - 32);
-    };
-    draw();
-    window.addEventListener("resize", draw);
-    return () => window.removeEventListener("resize", draw);
-  }, []);
-  return <canvas className="cosine-canvas" ref={canvasRef} aria-label="Cosine response curve chart" />;
-}
 
+    const draw = () => {
+      const W = canvas.clientWidth || 420;
+      const H = canvas.clientHeight || 260;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      const pad = { left: 48, right: 16, top: 14, bottom: 36 };
+      const cw = W - pad.left - pad.right;
+      const ch = H - pad.top - pad.bottom;
+
+      const xMin = 300, xMax = 1100, yMin = 0, yMax = 1.1;
+      const toX = (nm: number) => pad.left + ((nm - xMin) / (xMax - xMin)) * cw;
+      const toY = (v: number)  => pad.top  + ch - ((v - yMin) / (yMax - yMin)) * ch;
+
+      // grid
+      for (let v = 0; v <= 1.11; v += 0.1) {
+        const y = toY(v);
+        ctx.strokeStyle = Math.abs(v % 0.5) < 0.01 ? 'rgba(148,163,184,0.12)' : 'rgba(148,163,184,0.05)';
+        ctx.lineWidth = 0.5;
+        ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + cw, y); ctx.stroke();
+      }
+      [400,500,600,700,800,900,1000].forEach(nm => {
+        ctx.strokeStyle = 'rgba(148,163,184,0.07)'; ctx.lineWidth = 0.5;
+        const x = toX(nm);
+        ctx.beginPath(); ctx.moveTo(x, pad.top); ctx.lineTo(x, pad.top + ch); ctx.stroke();
+      });
+
+      // border
+      ctx.strokeStyle = 'rgba(148,163,184,0.25)'; ctx.lineWidth = 0.8;
+      ctx.strokeRect(pad.left, pad.top, cw, ch);
+
+      // ticks
+      ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 0.7;
+      [300,400,500,600,700,800,900,1000,1100].forEach(nm => {
+        const x = toX(nm);
+        ctx.beginPath(); ctx.moveTo(x, pad.top+ch); ctx.lineTo(x, pad.top+ch+4); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x, pad.top); ctx.lineTo(x, pad.top-3); ctx.stroke();
+      });
+      for (let v = 0.1; v <= 1.11; v += 0.1) {
+        const y = toY(v);
+        ctx.beginPath(); ctx.moveTo(pad.left-4, y); ctx.lineTo(pad.left, y); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(pad.left+cw, y); ctx.lineTo(pad.left+cw+3, y); ctx.stroke();
+      }
+
+      // labels
+      ctx.font = "9px 'JetBrains Mono', monospace"; ctx.fillStyle = 'rgba(148,163,184,0.6)';
+      ctx.textAlign = 'center';
+      [300,400,500,600,700,800,900,1000,1100].forEach(nm => ctx.fillText(nm+'', toX(nm), pad.top+ch+14));
+      ctx.textAlign = 'right';
+      [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.1].forEach(v => ctx.fillText(v.toFixed(1), pad.left-6, toY(v)+3));
+      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(148,163,184,0.45)';
+      ctx.fillText('Wavelength (nm)', pad.left+cw/2, H-4);
+      ctx.save();
+      ctx.translate(9, pad.top+ch/2); ctx.rotate(-Math.PI/2);
+      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(148,163,184,0.45)';
+      ctx.fillText('Relative Response to Photons', 0, 0);
+      ctx.restore();
+
+      // response curve
+      const pts = [];
+      for (let nm = 300; nm <= 1100; nm++) {
+        let v = 0;
+        if (nm < 350) v = 0;
+        else if (nm < 366) v = (nm-350)/16;
+        else if (nm <= 1028) v = 0.990 + 0.010*Math.sin((nm-350)*0.017) + 0.006*Math.sin((nm-350)*0.043) + 0.004*Math.cos((nm-420)*0.008);
+        else if (nm < 1050) v = 0.990*(1-Math.pow((nm-1028)/22,1.5));
+        pts.push([nm, Math.max(0, Math.min(1.05, v))]);
+      }
+
+      // fill
+      ctx.beginPath();
+      ctx.moveTo(toX(300), toY(0));
+      pts.forEach(([nm, v]) => ctx.lineTo(toX(nm), toY(v)));
+      ctx.lineTo(toX(1100), toY(0));
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(236,72,153,0.09)'; ctx.fill();
+
+      // line
+      ctx.beginPath(); ctx.strokeStyle = '#EC4899'; ctx.lineWidth = 1.8; ctx.lineJoin = 'round';
+      pts.forEach(([nm,v],i) => { if(i===0) ctx.moveTo(toX(nm),toY(v)); else ctx.lineTo(toX(nm),toY(v)); });
+      ctx.stroke();
+    };
+
+    draw();
+    window.addEventListener('resize', draw);
+    return () => window.removeEventListener('resize', draw);
+  }, []);
+  return <canvas className="cosine-canvas" ref={canvasRef} aria-label="Relative spectral response to photons" />;
+}
 function MiniIcon({ kind, color }: { kind: "optical" | "chip" | "stable" | "ai" | "leaf" | "farm" | "bulb" | "research"; color: string }) {
   if (kind === "chip") return <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="8" y="8" width="16" height="16" rx="2" stroke={color} strokeWidth="1.5" /><rect x="12" y="12" width="8" height="8" rx="1" fill={color} opacity="0.18" /><path d="M12 4v4M20 4v4M12 24v4M20 24v4M4 12h4M24 12h4M4 20h4M24 20h4" stroke={color} strokeWidth="1.2" strokeLinecap="round" /></svg>;
   if (kind === "stable") return <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M4 20 Q8 12, 12 16 T20 16 T28 16" stroke={color} strokeWidth="1.5" strokeLinecap="round" /><path d="M4 20 Q8 18, 12 20 T20 20 T28 20" stroke={color} opacity="0.35" /></svg>;
@@ -770,9 +790,9 @@ function CalibrationSection() {
         </Reveal>
         <Reveal delay={0.15}>
           <div className="panel chart-panel">
-            <h3>Cosine response curve</h3>
-            <CosineResponseChart />
-            <p>Directional response error within +/-5% at 75 degree zenith angle.</p>
+            <h3>Relative Response to Photons</h3>
+            <SpectralResponseChart />
+            <p>Flat spectral response from 350–1050 nm, maintaining ≥98% relative sensitivity across the full PAR and far-red range.</p>
           </div>
         </Reveal>
       </div>
