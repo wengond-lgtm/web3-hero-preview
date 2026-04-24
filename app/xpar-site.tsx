@@ -1042,7 +1042,7 @@ function SupportDownloadsSection() {
   return (
     <section className="section section-tight">
       <div className="container">
-        <Reveal><h2 style={{ fontSize: "clamp(32px, 4.5vw, 52px)", fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-1.5px", marginBottom: "16px" }}>Download <GradientText className="grad-cyan">Center</GradientText></h2></Reveal>
+        <Reveal><h2 style={{ fontSize: "clamp(32px, 4.5vw, 52px)", color: "var(--text-primary)", letterSpacing: "-1.5px", marginBottom: "16px" }}>Download <GradientText className="grad-cyan">Center</GradientText></h2></Reveal>
         <Reveal delay={0.05}><div className="filter-row">{categories.map((category) => <button className={active === category ? "filter-pill active" : "filter-pill"} key={category} onClick={() => setActive(category)} type="button">{category}</button>)}</div></Reveal>
         <Reveal delay={0.1}><div className="download-list">{visibleDownloads.map((file) => <article className="download-row" key={file.name}><span className="download-type">{file.type}</span><div><h2>{file.name}</h2><p>{file.size}</p></div><a className="outline-link" href={file.href}>Download</a></article>)}</div></Reveal>
       </div>
