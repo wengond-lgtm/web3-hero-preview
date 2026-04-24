@@ -1030,7 +1030,23 @@ function CertificatePage() {
           </Reveal>
         </div>
       </section>
+      <SupportDownloadsSection />
     </>
+  );
+}
+
+function SupportDownloadsSection() {
+  const categories = ["All", "Datasheet", "Manual", "Software"];
+  const [active, setActive] = useState("All");
+  const visibleDownloads = active === "All" ? downloads : downloads.filter((file) => file.type === active);
+  return (
+    <section className="section section-tight">
+      <div className="container">
+        <Reveal><h2 className="section-title">Download <GradientText className="grad-cyan">Center</GradientText></h2></Reveal>
+        <Reveal delay={0.05}><div className="filter-row">{categories.map((category) => <button className={active === category ? "filter-pill active" : "filter-pill"} key={category} onClick={() => setActive(category)} type="button">{category}</button>)}</div></Reveal>
+        <Reveal delay={0.1}><div className="download-list">{visibleDownloads.map((file) => <article className="download-row" key={file.name}><span className="download-type">{file.type}</span><div><h2>{file.name}</h2><p>{file.size}</p></div><a className="outline-link" href={file.href}>Download</a></article>)}</div></Reveal>
+      </div>
+    </section>
   );
 }
 
