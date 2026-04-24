@@ -998,91 +998,11 @@ type CertificateResult = { found: boolean; sn?: string };
 
 function CalibrationCertCard({ sn }: { sn: string }) {
   return (
-    <div className="cal-cert-card">
-      <div className="cal-cert-header">
-        <h1>CERTIFICATE OF CALIBRATION</h1>
-        <p className="cert-subtitle">X-Series Spectrometer</p>
-      </div>
-
-      <div className="cal-cert-content">
-        <div className="cert-left">
-          <h2>EQUIPMENT INFORMATION</h2>
-          <div className="cert-info-group">
-            <div className="cert-row">
-              <span className="cert-label">Model:</span>
-              <span className="cert-value">X-200</span>
-            </div>
-            <div className="cert-row">
-              <span className="cert-label">Spectral Range:</span>
-              <span className="cert-value">350-1050 nm</span>
-            </div>
-            <div className="cert-row">
-              <span className="cert-label">Serial Number:</span>
-              <span className="cert-value">{sn}</span>
-            </div>
-            <div className="cert-row">
-              <span className="cert-label">Date of Manufacture:</span>
-              <span className="cert-value">2026-03-15</span>
-            </div>
-            <div className="cert-row">
-              <span className="cert-label">Calibration Date:</span>
-              <span className="cert-value">2026-04-08</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="cert-right">
-          <h2>CALIBRATION PARAMETERS</h2>
-          <table className="cert-table">
-            <thead>
-              <tr>
-                <th>Parameter</th>
-                <th>Result</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Spectral Wavelength</td>
-                <td>Calibrated</td>
-              </tr>
-              <tr>
-                <td>Absolute Spectral Responsivity</td>
-                <td>Calibrated</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div className="cert-notice">
-        <p>✓ Spectral irradiance calibration is performed using the reference spectrometer Instrument Systems CAS 140 (S/N 810714216, NIST-calibrated), and transferred via the reference source Ocean Insight HL-3 Plus (S/N:7003P2352 traceable to NIST), ensuring traceability to the International System of Units (SI).</p>
-      </div>
-
-      <div className="cert-authorization">
-        <div className="cert-sign-box">
-          <p className="cert-sign-title">CALIBRATION TECHNICIAN</p>
-          <p className="cert-signature">Kiki Luo</p>
-        </div>
-        <div className="cert-sign-box">
-          <p className="cert-sign-title">REVIEWED BY</p>
-          <p className="cert-signature">Ella Zhang</p>
-        </div>
-      </div>
-
-      <div className="cert-important">
-        <h3>IMPORTANT NOTICE</h3>
-        <p>Read the User Manual before use. The Spectrometer is factory calibrated. This certificate is issued in accordance with procedure CAL-PAR-001. Measurement results are traceable to NIST and the International System of Units (SI). Please retain this certificate for verification purposes.</p>
-      </div>
-
-      <div className="cert-footer">
-        <div className="cert-footer-left">
-          <img src="/xpar-logo.svg" alt="XPAR" className="cert-logo" />
-          <p>XPAR Optical Metrology Laboratory</p>
-        </div>
-        <div className="cert-footer-right">
-          <p>Document generated: 2026-04-08 14:30:00 | This certificate is valid only for the instrument identified above.</p>
-        </div>
-      </div>
+    <div className="cal-cert-container">
+      <svg viewBox="0 0 243.91 339.46" className="cal-cert-svg" xmlns="http://www.w3.org/2000/svg">
+        <image href="/Certificate of Calibration.svg" width="243.91" height="339.46" />
+      </svg>
+      <div className="cal-cert-sn-overlay">{sn}</div>
     </div>
   );
 }
