@@ -1298,6 +1298,8 @@ input, textarea, select { font-family: inherit; }
   border: 1px solid var(--border);
   border-radius: 4px;
   white-space: nowrap;
+  width: 90px;
+  text-align: center;
 }
 .download-row > div { min-width: 0; }
 .download-row h2 { font-size: 15px; font-weight: 600; color: var(--text-heading); margin-bottom: 3px; }
