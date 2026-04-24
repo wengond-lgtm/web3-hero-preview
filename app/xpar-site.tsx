@@ -994,7 +994,98 @@ function ContactPage() {
   );
 }
 
-type CertificateResult = { found: boolean; pdf_url?: string; device_model?: string; calibration_date?: string };
+type CertificateResult = { found: boolean; sn?: string };
+
+function CalibrationCertCard({ sn }: { sn: string }) {
+  return (
+    <div className="cal-cert-card">
+      <div className="cal-cert-header">
+        <h1>CERTIFICATE OF CALIBRATION</h1>
+        <p className="cert-subtitle">X-Series Spectrometer</p>
+      </div>
+
+      <div className="cal-cert-content">
+        <div className="cert-left">
+          <h2>EQUIPMENT INFORMATION</h2>
+          <div className="cert-info-group">
+            <div className="cert-row">
+              <span className="cert-label">Model:</span>
+              <span className="cert-value">X-200</span>
+            </div>
+            <div className="cert-row">
+              <span className="cert-label">Spectral Range:</span>
+              <span className="cert-value">350-1050 nm</span>
+            </div>
+            <div className="cert-row">
+              <span className="cert-label">Serial Number:</span>
+              <span className="cert-value">{sn}</span>
+            </div>
+            <div className="cert-row">
+              <span className="cert-label">Date of Manufacture:</span>
+              <span className="cert-value">2026-03-15</span>
+            </div>
+            <div className="cert-row">
+              <span className="cert-label">Calibration Date:</span>
+              <span className="cert-value">2026-04-08</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="cert-right">
+          <h2>CALIBRATION PARAMETERS</h2>
+          <table className="cert-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Spectral Wavelength</td>
+                <td>Calibrated</td>
+              </tr>
+              <tr>
+                <td>Absolute Spectral Responsivity</td>
+                <td>Calibrated</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="cert-notice">
+        <p>✓ Spectral irradiance calibration is performed using the reference spectrometer Instrument Systems CAS 140 (S/N 810714216, NIST-calibrated), and transferred via the reference source Ocean Insight HL-3 Plus (S/N:7003P2352 traceable to NIST), ensuring traceability to the International System of Units (SI).</p>
+      </div>
+
+      <div className="cert-authorization">
+        <div className="cert-sign-box">
+          <p className="cert-sign-title">CALIBRATION TECHNICIAN</p>
+          <p className="cert-signature">Kiki Luo</p>
+        </div>
+        <div className="cert-sign-box">
+          <p className="cert-sign-title">REVIEWED BY</p>
+          <p className="cert-signature">Ella Zhang</p>
+        </div>
+      </div>
+
+      <div className="cert-important">
+        <h3>IMPORTANT NOTICE</h3>
+        <p>Read the User Manual before use. The Spectrometer is factory calibrated. This certificate is issued in accordance with procedure CAL-PAR-001. Measurement results are traceable to NIST and the International System of Units (SI). Please retain this certificate for verification purposes.</p>
+      </div>
+
+      <div className="cert-footer">
+        <div className="cert-footer-left">
+          <img src="/xpar-logo.svg" alt="XPAR" className="cert-logo" />
+          <p>XPAR Optical Metrology Laboratory</p>
+        </div>
+        <div className="cert-footer-right">
+          <p>Document generated: 2026-04-08 14:30:00 | This certificate is valid only for the instrument identified above.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function CertificatePage() {
   const [serialNumber, setSerialNumber] = useState("");
@@ -1016,15 +1107,14 @@ function CertificatePage() {
         <div className="container support-layout">
           <Reveal>
             <div className="search-panel">
-              <label className="form-field wide"><span>Serial Number</span><input value={serialNumber} onChange={(event) => setSerialNumber(event.target.value)} placeholder="Try XPAR-X200-2026" /></label>
+              <label className="form-field wide"><span>Serial Number</span><input value={serialNumber} onChange={(event) => setSerialNumber(event.target.value)} placeholder="e.g. SP0226030002" /></label>
               <button className="button primary" type="button" disabled={loading} onClick={() => lookup()}>{loading ? "Searching..." : "Search Certificate"}</button>
-              <div className="demo-row"><button type="button" onClick={() => lookup("XPAR-X200-2026")}>Demo X200</button><button type="button" onClick={() => lookup("XPAR-X100-2026")}>Demo X100</button></div>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="result-panel">
-              {!result ? <p>Search results will appear here with device model, calibration date, and PDF download link.</p> : result.found ? (
-                <><span className="result-badge">Verified</span><h2>{result.device_model}</h2><dl><dt>Calibration date</dt><dd>{result.calibration_date}</dd><dt>Certificate PDF</dt><dd><a href={result.pdf_url}>Download PDF</a></dd></dl></>
+              {!result ? <p>Enter a serial number and click "Search Certificate" to verify your device's calibration status.</p> : result.found && result.sn ? (
+                <CalibrationCertCard sn={result.sn} />
               ) : <><span className="result-badge muted">Not found</span><p>No certificate matched this serial number. Please verify the serial number and try again.</p></>}
             </div>
           </Reveal>
