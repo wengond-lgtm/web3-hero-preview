@@ -158,7 +158,7 @@ const navItems = [
 ];
 
 const downloads = [
-  { type: "Datasheet", name: "XPAR X200 Datasheet", size: "2.4 MB", href: "#" },
+  { type: "Datasheet", name: "XPAR X200 Datasheet", size: "234 KB", href: "/X-200_User Documentation_ V1.0_202604.pdf" },
   { type: "Datasheet", name: "XPAR X100 Datasheet", size: "1.9 MB", href: "#" },
   { type: "Manual", name: "User Manual", size: "5.8 MB", href: "#" },
   { type: "Manual", name: "Calibration Guide", size: "3.1 MB", href: "#" },
