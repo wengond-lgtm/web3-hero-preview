@@ -744,7 +744,7 @@ function DeviceMock({ model, badge }: { model: string; badge?: string }) {
       {badge ? <span className="device-badge">{badge}</span> : null}
       <img
         className="device-product-img"
-        src={`/${model}.png`}
+        src={`/${model.replace('-', '')}.png`}
         alt={`XPAR ${model}`}
       />
     </div>
