@@ -952,7 +952,7 @@ function ProductDetailPage({ product }: { product: Product }) {
         </div>
       </section>
       <AppShowcase product={product} />
-      <section className="section"><div className="container"><SectionHeader label="Specifications" tone="yellow" title={<>Technical <GradientText className="grad-calibration">Specifications</GradientText></>} /><SpecTable specs={product.specs} /></div></section>
+      <section className="section"><div className="container"><SectionHeader label="Specifications" tone="yellow" title={<>Technical <GradientText className="grad-calibration">Specifications</GradientText></>} /><SpecTable specs={product.specs} /><div className="panel chart-panel" style={{ marginTop: '2rem' }}><h3>Relative Response to Photons</h3><SpectralResponseChart /><p>Flat spectral response from 350–1050 nm, maintaining ≥98% relative sensitivity across the full PAR and far-red range.</p></div></div></section>
     </>
   );
 }
