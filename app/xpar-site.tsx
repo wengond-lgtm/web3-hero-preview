@@ -752,9 +752,43 @@ function DeviceMock({ model, badge }: { model: string; badge?: string }) {
 }
 
 function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const imageCount = 3;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % imageCount);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [imageCount]);
+
+  const getProductImage = (imageIndex: number) => {
+    const modelPrefix = product.slug === "x100" ? "X-100" : "X-200";
+    return `/${modelPrefix}_${imageIndex + 1}.png`;
+  };
+
   return (
     <motion.article className="product-card" style={{ "--accent": product.accent, "--accent-bg": product.accentBg, "--accent-border": product.accentBorder } as CSSProperties} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.75, delay: index * 0.12, ease }}>
-      <DeviceMock model={product.model} badge={product.badge} />
+      <div className="device-mock">
+        {product.badge ? <span className="device-badge">{product.badge}</span> : null}
+        <div className="product-carousel">
+          <img
+            className="device-product-img"
+            src={getProductImage(currentImageIndex)}
+            alt={`XPAR ${product.model} - Image ${currentImageIndex + 1}`}
+          />
+          <div className="carousel-dots">
+            {Array.from({ length: imageCount }).map((_, i) => (
+              <button
+                key={i}
+                className={`carousel-dot ${i === currentImageIndex ? 'active' : ''}`}
+                onClick={() => setCurrentImageIndex(i)}
+                aria-label={`View image ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="product-body">
         <span className="product-model">{product.model}</span>
         <h3>{product.listTitle}</h3>
