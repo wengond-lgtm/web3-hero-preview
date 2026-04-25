@@ -713,8 +713,8 @@ function TechSection() {
             <div className="tech-stats">
               <div className="stat-card"><strong>1 nm</strong><span>Spectral Resolution</span></div>
               <div className="stat-card"><strong>350–1050 nm</strong><span>Full Range</span></div>
-              <div className="stat-card"><strong>700 nm</strong><span>Range Span</span></div>
-              <div className="stat-card"><strong>&lt; 2 s</strong><span>Scan Time</span></div>
+              <div className="stat-card"><strong>&lt;2% per year</strong><span>Long-term drift</span></div>
+              <div className="stat-card"><strong>&geq;0.999</strong><span>Spectral Repeatability</span></div>
             </div>
           </Reveal>
           <div className="feature-grid-4">
