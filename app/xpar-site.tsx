@@ -39,7 +39,7 @@ type Article = {
 const products: Product[] = [
   {
     slug: "x100",
-    model: "X100",
+    model: "X-100",
     accent: "#06B6D4",
     accentBg: "rgba(6, 182, 212, 0.06)",
     accentBorder: "rgba(6, 182, 212, 0.28)",
@@ -66,7 +66,7 @@ const products: Product[] = [
   },
   {
     slug: "x200",
-    model: "X200",
+    model: "X-200",
     badge: "FLAGSHIP",
     accent: "#818CF8",
     accentBg: "rgba(129, 140, 248, 0.06)",
@@ -227,7 +227,7 @@ function Navbar() {
 
 function Footer() {
   const columns = [
-    { title: "Products", links: [{ label: "X100", href: "/products/x100" }, { label: "X200", href: "/products/x200" }] },
+    { title: "Products", links: [{ label: "X-100", href: "/products/x100" }, { label: "X-200", href: "/products/x200" }] },
     { title: "Support", links: [{ label: "Certificate verification", href: "/support/certificate" }, { label: "Downloads", href: "/support/downloads" }] },
     { title: "Company", links: [{ label: "About", href: "/about" }, { label: "Resources", href: "/resources" }, { label: "Contact", href: "/contact" }] }
   ];
@@ -871,7 +871,7 @@ function AppShowcase({ product }: { product: Product }) {
   return (
     <section className="section app-section">
       <div className="container app-layout">
-        <Reveal><div className="phone-mock"><img className="phone-product-img" src="/x200phone.png" alt="XPAR Analyzer App on X200" /></div></Reveal>
+        <Reveal><div className="phone-mock"><img className="phone-product-img" src="/x200phone.png" alt="XPAR Analyzer App on X-200" /></div></Reveal>
         <Reveal delay={0.1}>
           <span className="section-pill cyan">XPAR Analyzer App</span>
           <h2 className="section-title compact">Measurement workflow, organized.</h2>
