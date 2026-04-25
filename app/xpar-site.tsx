@@ -61,7 +61,7 @@ const products: Product[] = [
     specs: [
       { category: "Optical", items: [{ label: "Spectral Range", value: "350-1050 nm" }, { label: "Spectral Resolution", value: "1 nm" }, { label: "Cosine Response", value: "+/-5% at 75 degree zenith" }, { label: "Source Compatibility", value: "LED, HPS, fluorescent, sunlight" }, { label: "Spectral Repeatability", value: "≥ 0.999" }, { label: "Long-term Drift", value: "< 2% per year" }, { label: "Non-linearity", value: "< 1% (within 6000 μmol/m²/s)" }, { label: "Spectral Width (FWHM)", value: "< 6 nm" }, { label: "Wavelength Repeatability", value: "± 1 nm" }, { label: "Directional Response", value: "± 5% @ 75°" }, { label: "Tilt Error", value: "< 0.5%" }, { label: "Temperature Response", value: "< 0.15% /°C" }, { label: "Daily Total Uncertainty", value: "< 5%" }, { label: "Sensor Operating Temperature", value: "-10 to 50 °C" }, { label: "Sensor Operating Humidity", value: "< 90% RH (non-condensing)" }] },
       { category: "Physical", items: [{ label: "Use Case", value: "Portable field measurement" }, { label: "Display", value: "Mobile app assisted" }, { label: "Data Export", value: "CSV placeholder" }] },
-      { category: "Electrical", items: [{ label: "Connectivity", value: "Bluetooth placeholder" }, { label: "Power", value: "Rechargeable battery placeholder" }, { label: "Charging", value: "USB-C placeholder" }] }
+      { category: "Electrical", items: [{ label: "Data Output Connector", value: "Aviation connector (via Type-C adapter)" }, { label: "Power Consumption", value: "200 mW" }, { label: "Operating Voltage", value: "3.3 V" }, { label: "Operating Current", value: "60 mA" }, { label: "Warranty", value: "3 years against defects in materials and workmanship" }] }
     ]
   },
   {
@@ -89,7 +89,7 @@ const products: Product[] = [
     specs: [
       { category: "Optical", items: [{ label: "Spectral Range", value: "350-1050 nm" }, { label: "Spectral Resolution", value: "1 nm" }, { label: "Cosine Response", value: "+/-5% at 75 degree zenith" }, { label: "Source Compatibility", value: "LED, HPS, fluorescent, sunlight" }, { label: "Spectral Repeatability", value: "≥ 0.999" }, { label: "Long-term Drift", value: "< 2% per year" }, { label: "Non-linearity", value: "< 1% (within 6000 μmol/m²/s)" }, { label: "Spectral Width (FWHM)", value: "< 6 nm" }, { label: "Wavelength Repeatability", value: "± 1 nm" }, { label: "Directional Response", value: "± 5% @ 75°" }, { label: "Tilt Error", value: "< 0.5%" }, { label: "Temperature Response", value: "< 0.15% /°C" }, { label: "Daily Total Uncertainty", value: "< 5%" }, { label: "Sensor Operating Temperature", value: "-10 to 50 °C" }, { label: "Sensor Operating Humidity", value: "< 90% RH (non-condensing)" }] },
       { category: "Physical", items: [{ label: "Instrument Type", value: "Compact portable spectrometer" }, { label: "Workflow", value: "XPAR Analyzer App" }, { label: "Data Export", value: "CSV" }] },
-      { category: "Electrical", items: [{ label: "Connectivity", value: "Bluetooth placeholder" }, { label: "Power", value: "Rechargeable battery placeholder" }, { label: "Charging", value: "USB-C placeholder" }] }
+      { category: "Electrical", items: [{ label: "Data Output Connector", value: "Aviation connector (via Type-C adapter)" }, { label: "Power Consumption", value: "200 mW" }, { label: "Operating Voltage", value: "3.3 V" }, { label: "Operating Current", value: "60 mA" }, { label: "Warranty", value: "3 years against defects in materials and workmanship" }] }
     ]
   }
 ];
