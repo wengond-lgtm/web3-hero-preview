@@ -1319,10 +1319,10 @@ input, textarea, select { font-family: inherit; }
 }
 .cal-cert-sn-overlay {
   position: absolute;
-  top: calc(31.7% - 23px);
+  top: calc(31.7% - 16px);
   left: calc(35% - 23px);
   width: 30%;
-  font-family: 'Microsoft YaHei', 微软雅黑, sans-serif;
+  font-family: 'Source Serif Variable', Georgia, serif;
   font-size: clamp(8px, 2vw, 12px);
   font-weight: 400;
   color: #000;
