@@ -959,8 +959,6 @@ function ProductDetailPage({ product }: { product: Product }) {
 
 function AboutPage() {
   const blocks = [
-    { title: "A Visionary Team of Optical Experts", body: "XPAR brings together optoelectronics, embedded sensing, calibration, and data science talent to build practical measurement tools for Agriculture 4.0.", label: "Team" },
-    { title: "The XPAR Optical Metrology Laboratory", body: "Our lab workflow is designed around NIST traceability, SI units, and the CAL-PAR-001 calibration protocol so field teams can trust device-level results.", label: "Laboratory" },
     { title: "Engineering the Future of Horticulture", body: "We believe research-level spectral analysis should become standard field practice, helping growers turn light into a measurable production advantage.", label: "Vision" }
   ];
   return (
