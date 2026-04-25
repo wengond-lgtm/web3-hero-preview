@@ -88,7 +88,7 @@ const products: Product[] = [
     ],
     specs: [
       { category: "Optical", items: [{ label: "Spectral Range", value: "350-1050 nm" }, { label: "Spectral Resolution", value: "1 nm" }, { label: "Cosine Response", value: "+/-5% at 75 degree zenith" }, { label: "Source Compatibility", value: "LED, HPS, fluorescent, sunlight" }] },
-      { category: "Physical", items: [{ label: "Instrument Type", value: "Compact portable spectrometer" }, { label: "Workflow", value: "XPAR Analyzer App" }, { label: "Data Export", value: "CSV, report placeholder" }] },
+      { category: "Physical", items: [{ label: "Instrument Type", value: "Compact portable spectrometer" }, { label: "Workflow", value: "XPAR Analyzer App" }, { label: "Data Export", value: "CSV" }] },
       { category: "Electrical", items: [{ label: "Connectivity", value: "Bluetooth placeholder" }, { label: "Power", value: "Rechargeable battery placeholder" }, { label: "Charging", value: "USB-C placeholder" }] }
     ]
   }
