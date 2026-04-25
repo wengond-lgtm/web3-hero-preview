@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import XparSite from "../../xpar-site";
 
 export const metadata: Metadata = {
-  title: "XPAR X100",
+  title: "X-100",
   description:
     "Reliable portable spectral measurement for everyday horticulture field work."
 };
