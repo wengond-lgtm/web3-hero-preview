@@ -756,7 +756,7 @@ function ProductCard({ product, index = 0 }: { product: Product; index?: number 
     <motion.article className="product-card" style={{ "--accent": product.accent, "--accent-bg": product.accentBg, "--accent-border": product.accentBorder } as CSSProperties} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.75, delay: index * 0.12, ease }}>
       <DeviceMock model={product.model} badge={product.badge} />
       <div className="product-body">
-        <span className="product-model">XPAR {product.model}</span>
+        <span className="product-model">{product.model}</span>
         <h3>{product.listTitle}</h3>
         <ul>{product.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
         <Link href={`/products/${product.slug}`} className="outline-link">View Product <span aria-hidden="true">-&gt;</span></Link>
