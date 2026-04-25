@@ -81,10 +81,10 @@ const products: Product[] = [
       { title: "Total Source Compatibility", description: "Validate LED, HPS, fluorescent, and natural sunlight with consistent 1 nm resolution data." }
     ],
     appFeatures: [
-      { title: "General Mode", description: "Real-time PPFD, lux, and fundamental light data." },
+      { title: "General Mode", description: "Real-time PPFD, TPFD, PFD of different wavelength, illumination, and fundamental light data." },
       { title: "PAR Map Mode", description: "Detailed maps to visualize light distribution and uniformity." },
       { title: "Custom Waveband Analysis", description: "Define specific wavelength ranges for tailored monitoring." },
-      { title: "Intuitive Modes", description: "Choose between General, Pro, and PAR Map modes." }
+      { title: "Auto Mode", description: "Long-term tracking of key metrics to help you identify and respond to light variations." }
     ],
     specs: [
       { category: "Optical", items: [{ label: "Spectral Range", value: "350-1050 nm" }, { label: "Spectral Resolution", value: "1 nm" }, { label: "Cosine Response", value: "+/-5% at 75 degree zenith" }, { label: "Source Compatibility", value: "LED, HPS, fluorescent, sunlight" }] },
@@ -908,7 +908,7 @@ function AppShowcase({ product }: { product: Product }) {
         <Reveal><div className="phone-mock"><img className="phone-product-img" src="/x200phone.png" alt="XPAR Analyzer App on X-200" /></div></Reveal>
         <Reveal delay={0.1}>
           <span className="section-pill cyan">XPAR Analyzer App</span>
-          <h2 className="section-title compact">Measurement workflow, organized.</h2>
+          <h2 className="section-title compact">Turn Your Phone Into a Real-Time Sensor Analyzer.</h2>
           <div className="mini-card-grid">{product.appFeatures.map((feature) => <article className="mini-card" key={feature.title}><h3>{feature.title}</h3><p>{feature.description}</p></article>)}</div>
         </Reveal>
       </div>
