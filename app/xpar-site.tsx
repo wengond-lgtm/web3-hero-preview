@@ -1000,7 +1000,7 @@ function CalibrationCertCard({ sn }: { sn: string }) {
   return (
     <div className="cal-cert-container">
       <svg viewBox="0 0 243.91 339.46" className="cal-cert-svg" xmlns="http://www.w3.org/2000/svg">
-        <image href="/Certificate of Calibration.svg" width="243.91" height="339.46" />
+        <image href="/Certificate of Calibration02.svg" width="243.91" height="339.46" />
       </svg>
       <div className="cal-cert-sn-overlay">{sn}</div>
     </div>
