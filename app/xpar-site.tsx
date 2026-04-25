@@ -53,10 +53,10 @@ const products: Product[] = [
       { title: "Portable reliability", description: "A rugged workflow keeps daily quality checks consistent across growing zones." }
     ],
     appFeatures: [
-      { title: "General Mode", description: "Real-time PPFD, lux, and core grow light indicators." },
-      { title: "PAR Snapshots", description: "Quick records for routine production audits." },
-      { title: "Waveband Checks", description: "Blue, green, red, and far-red comparison workflows." },
-      { title: "Export Notes", description: "Document field readings for vendors and grow teams." }
+      { title: "General Mode", description: "Real-time PPFD, TPFD, PFD of different wavelength, illumination, and fundamental light data." },
+      { title: "PAR Map Mode", description: "Detailed maps to visualize light distribution and uniformity." },
+      { title: "Custom Waveband Analysis", description: "Define specific wavelength ranges for tailored monitoring." },
+      { title: "Auto Mode", description: "Long-term tracking of key metrics to help you identify and respond to light variations." }
     ],
     specs: [
       { category: "Optical", items: [{ label: "Spectral Range", value: "350-1050 nm" }, { label: "Spectral Resolution", value: "1 nm" }, { label: "Measurement Mode", value: "PAR, PPFD, spectral power" }] },
