@@ -1358,10 +1358,10 @@ input, textarea, select { font-family: inherit; }
   top: calc(31.7% - 16px);
   left: calc(35% - 23px);
   width: 30%;
-  font-family: 'Source Serif Variable', Georgia, serif;
+  font-family: 'SimSun', '宋体', Georgia, serif;
   font-size: clamp(8px, 2vw, 12px);
   font-weight: 400;
-  color: #000;
+  color: #555;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
