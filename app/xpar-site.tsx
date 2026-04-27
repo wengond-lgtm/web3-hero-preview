@@ -834,10 +834,10 @@ function CalibrationSection() {
 
 function IndustrySection() {
   const industries = [
-    { title: "Greenhouse growers", desc: "Optimize light recipes for each crop stage with real-time spectral feedback.", color: "#10B981", icon: "leaf" },
-    { title: "Vertical farms", desc: "Map PAR distribution across multi-tier systems for uniform canopy coverage.", color: "#818CF8", icon: "farm" },
-    { title: "Lighting engineers", desc: "Validate LED fixture output against target spectra with 1 nm resolution data.", color: "#F59E0B", icon: "bulb" },
-    { title: "Agricultural researchers", desc: "Export high-resolution spectral datasets for photobiology studies and publications.", color: "#EC4899", icon: "research" }
+    { title: "Greenhouse growers", desc: "Optimize light recipes for each crop stage with real-time spectral feedback.", color: "#10B981", icon: "leaf", image: "/industry-greenhouse.jpg" },
+    { title: "Vertical farms", desc: "Map PAR distribution across multi-tier systems for uniform canopy coverage.", color: "#818CF8", icon: "farm", image: "/industry-farms.jpg" },
+    { title: "Lighting engineers", desc: "Validate LED fixture output against target spectra with 1 nm resolution data.", color: "#F59E0B", icon: "bulb", image: "/industry-lighting.jpg" },
+    { title: "Agricultural researchers", desc: "Export high-resolution spectral datasets for photobiology studies and publications.", color: "#EC4899", icon: "research", image: "/industry-research.jpg" }
   ] as const;
   return (
     <section className="section industry-section">
@@ -847,6 +847,7 @@ function IndustrySection() {
           {industries.map((item, index) => (
             <Reveal delay={index * 0.1} key={item.title}>
               <article className="industry-card" style={{ "--accent": item.color } as CSSProperties}>
+                <img src={item.image} alt={item.title} className="industry-card-image" />
                 <span className="industry-icon"><MiniIcon kind={item.icon} color={item.color} /></span>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
