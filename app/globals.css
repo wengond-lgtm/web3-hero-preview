@@ -1020,22 +1020,22 @@ input, textarea, select { font-family: inherit; }
 }
 .page-hero-bg {
   background-image: url('/OurInstruments.jpg');
-  background-size: contain;
-  background-position: center 65px;
+  background-size: 100% auto;
+  background-position: center top;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   border-bottom: none;
 }
 @media (max-width: 768px) {
   .page-hero-bg {
-    background-position: center 40px;
-    background-size: contain;
+    background-size: 100% auto;
+    background-position: center top;
   }
 }
 @media (max-width: 480px) {
   .page-hero-bg {
-    background-position: center 30px;
-    background-size: contain;
+    background-size: 100% auto;
+    background-position: center top;
   }
 }
 .page-hero-bg::before {
