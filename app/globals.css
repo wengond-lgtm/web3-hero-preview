@@ -990,6 +990,16 @@ input, textarea, select { font-family: inherit; }
 .page-hero h1 { font-size: clamp(32px, 4.5vw, 52px); letter-spacing: -1.5px; margin-bottom: 16px; }
 .page-hero p { font-size: 18px; line-height: 1.7; color: var(--text-body); max-width: 560px; }
 .page-hero .section-pill { display: inline-flex; }
+.page-hero-bg {
+  background-image: url('/OurInstruments.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.page-hero-bg::before {
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
 
 /* ─── Product detail ────────────────────────────────────────── */
 .product-detail-hero {

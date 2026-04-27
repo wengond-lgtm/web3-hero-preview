@@ -865,9 +865,9 @@ function HomePage() {
   return <><HeroSection /><TechSection /><ProductShowcase /><CalibrationSection /><IndustrySection /></>;
 }
 
-function PageHero({ label, title, description, tone = "indigo" }: { label: string; title: ReactNode; description: string; tone?: "indigo" | "cyan" | "green" | "yellow" | "pink" }) {
+function PageHero({ label, title, description, tone = "indigo", bgImage = false }: { label: string; title: ReactNode; description: string; tone?: "indigo" | "cyan" | "green" | "yellow" | "pink"; bgImage?: boolean }) {
   return (
-    <section className="page-hero">
+    <section className={`page-hero ${bgImage ? "page-hero-bg" : ""}`}>
       <div className="container">
         <Reveal>
           <span className={`section-pill ${tone}`}>{label}</span>
@@ -882,7 +882,7 @@ function PageHero({ label, title, description, tone = "indigo" }: { label: strin
 function ProductsPage() {
   return (
     <>
-      <PageHero label="Products" tone="green" title={<>Our <GradientText className="grad-products">Instruments</GradientText></>} description="Explore portable spectrometers engineered for growers, lighting engineers, and agricultural researchers." />
+      <PageHero label="Products" tone="green" title={<>Our <GradientText className="grad-products">Instruments</GradientText></>} description="Explore portable spectrometers engineered for growers, lighting engineers, and agricultural researchers." bgImage={true} />
       <section className="section section-tight"><div className="container product-grid">{products.map((product, index) => <ProductCard product={product} index={index} key={product.slug} />)}</div></section>
     </>
   );
