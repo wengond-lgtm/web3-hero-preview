@@ -997,8 +997,8 @@ input, textarea, select { font-family: inherit; }
 .page-hero > .container { padding: 40px 0; }
 .page-hero-bg {
   background-image: url('/OurInstruments.jpg');
-  background-size: cover;
-  background-position: center top;
+  background-size: contain;
+  background-position: top center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
