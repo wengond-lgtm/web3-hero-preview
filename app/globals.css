@@ -1020,7 +1020,7 @@ input, textarea, select { font-family: inherit; }
 }
 .page-hero-bg {
   background-image: url('/OurInstruments.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -1028,13 +1028,13 @@ input, textarea, select { font-family: inherit; }
 }
 @media (max-width: 768px) {
   .page-hero-bg {
-    background-size: cover;
+    background-size: contain;
     background-position: center;
   }
 }
 @media (max-width: 480px) {
   .page-hero-bg {
-    background-size: cover;
+    background-size: contain;
     background-position: center;
   }
 }
