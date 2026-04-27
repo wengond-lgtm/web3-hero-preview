@@ -992,13 +992,19 @@ input, textarea, select { font-family: inherit; }
 .page-hero .section-pill { display: inline-flex; }
 .page-hero-bg {
   background-image: url('/OurInstruments.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 .page-hero-bg::before {
   background-color: rgba(0, 0, 0, 0.5);
   background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: 1;
+}
+.page-hero-bg .container {
+  position: relative;
+  z-index: 2;
 }
 
 /* ─── Product detail ────────────────────────────────────────── */
