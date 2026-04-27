@@ -111,6 +111,15 @@ input, textarea, select { font-family: inherit; }
   transition: background 0.3s;
 }
 
+@media (max-width: 768px) {
+  .navbar {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -237,7 +246,7 @@ input, textarea, select { font-family: inherit; }
   position: fixed;
   inset: 0;
   z-index: 90;
-  background: rgba(6,11,24,0.85);
+  background: rgba(4, 8, 16, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: flex;
