@@ -1113,7 +1113,7 @@ function DownloadsPage() {
 function ResourcesPage() {
   return (
     <>
-      <PageHero label="Resources" tone="pink" title={<>Spectral <GradientText className="grad-industry">Knowledge</GradientText> Library</>} description="Practical guides for growers, lighting engineers, and researchers working with plant light data." bgImage={true} />
+      <PageHero label="Resources" tone="pink" title={<>Spectral <GradientText className="grad-industry">Knowledge</GradientText> Library</>} description="Practical guides for growers, lighting engineers, and researchers working with plant light data." bgImage={true} bgImagePath="/Resources.jpg" />
       <section className="section section-tight">
         <div className="container resource-grid">
           {articles.map((article, index) => (
