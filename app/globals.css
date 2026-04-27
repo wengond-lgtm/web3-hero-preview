@@ -993,7 +993,7 @@ input, textarea, select { font-family: inherit; }
 .page-hero-bg {
   background-image: url('/OurInstruments.jpg');
   background-size: contain;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
