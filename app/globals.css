@@ -996,7 +996,6 @@ input, textarea, select { font-family: inherit; }
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  aspect-ratio: 1 / 1;
 }
 .page-hero-bg::before {
   background-color: rgba(0, 0, 0, 0.5);
