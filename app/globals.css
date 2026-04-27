@@ -1463,6 +1463,11 @@ input, textarea, select { font-family: inherit; }
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+@media (max-width: 480px) {
+  .cal-cert-sn-overlay {
+    top: calc(31.7% - 14px + 5px);
+  }
+}
 
 /* ─── Resources ─────────────────────────────────────────────── */
 .resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
