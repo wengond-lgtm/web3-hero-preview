@@ -75,6 +75,13 @@ input, textarea, select { font-family: inherit; }
   margin: 0 auto;
   padding: 0 1.5rem;
 }
+@media (max-width: 480px) {
+  .page-hero > .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+}
 
 /* ─── Spectrum line ─────────────────────────────────────────── */
 .spectrum-line {
@@ -1000,13 +1007,18 @@ input, textarea, select { font-family: inherit; }
   }
 }
 @media (max-width: 480px) {
+  body { overflow-x: hidden; }
   .page-hero {
     aspect-ratio: auto;
     min-height: 420px;
     border: none !important;
     border-bottom: none !important;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    max-width: 100vw;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    background-color: transparent !important;
   }
 }
 .page-hero::before {
@@ -1063,10 +1075,13 @@ input, textarea, select { font-family: inherit; }
 }
 .page-hero-bg + .section {
   border-top: none;
+  margin-top: 0 !important;
 }
 @media (max-width: 480px) {
   .page-hero-bg + .section {
     border-top: none !important;
+    margin-top: 0 !important;
+    border: none !important;
   }
 }
 
