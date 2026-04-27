@@ -157,6 +157,7 @@ const navItems = [
   { label: "About", href: "/about" }
 ];
 
+// Downloads list - only X-200 datasheet and app
 const downloads = [
   { type: "Datasheet", name: "X-200_User Documentation_ V1.0_202604", size: "288 KB", href: "/X-200_User Documentation_ V1.0_202604.pdf" },
   { type: "Software", name: "XPAR Analyzer App for Android", size: "5.9 MB", href: "/X200-AnalyzerPRO.apk" }
