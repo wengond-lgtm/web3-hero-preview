@@ -1045,6 +1045,9 @@ input, textarea, select { font-family: inherit; }
   position: relative;
   z-index: 2;
 }
+.page-hero-bg + .section {
+  border-top: none;
+}
 
 /* ─── Product detail ────────────────────────────────────────── */
 .product-detail-hero {
