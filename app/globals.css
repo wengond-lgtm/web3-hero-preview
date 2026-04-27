@@ -1639,4 +1639,6 @@ input, textarea, select { font-family: inherit; }
   .hero-actions { flex-direction: column; align-items: center; }
   .hero-actions.left { align-items: flex-start; }
   .button { width: 100%; text-align: center; }
+  .spectral-canvas { height: 180px; }
+  .cosine-canvas { height: 160px; }
 }
