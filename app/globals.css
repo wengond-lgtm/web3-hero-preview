@@ -1452,7 +1452,7 @@ input, textarea, select { font-family: inherit; }
 .cal-cert-sn-overlay {
   position: absolute;
   top: calc(31.7% - 14px);
-  left: calc(35% - 25px);
+  left: calc(35% - 25px - 4px);
   width: 30%;
   font-family: 'SimSun', '宋体', Georgia, serif;
   font-size: clamp(8px, 2vw, 12px);
