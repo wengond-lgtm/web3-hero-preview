@@ -1055,7 +1055,7 @@ function CertificatePage() {
   };
   return (
     <>
-      <PageHero label="Support" tone="cyan" title={<>Certificate <GradientText className="grad-cyan">Verification</GradientText></>} description="Verify a device calibration certificate by entering the instrument serial number." bgImage={true} bgImagePath="/Support.jpg" />
+      <PageHero label="Support" tone="cyan" title={<>Certificate <GradientText className="grad-cyan">Verification</GradientText></>} description="Verify a device calibration certificate by entering the instrument serial number." bgImage={true} bgImagePath="/Resources.jpg" />
       <section className="section section-tight">
         <div className="container support-layout">
           <Reveal>
@@ -1099,7 +1099,7 @@ function DownloadsPage() {
   const visibleDownloads = active === "All" ? downloads : downloads.filter((file) => file.type === active);
   return (
     <>
-      <PageHero label="Support" tone="cyan" title={<>Download <GradientText className="grad-cyan">Center</GradientText></>} description="Access datasheets, manuals, calibration documentation, and software placeholders." bgImage={true} bgImagePath="/Support.jpg" />
+      <PageHero label="Support" tone="cyan" title={<>Download <GradientText className="grad-cyan">Center</GradientText></>} description="Access datasheets, manuals, calibration documentation, and software placeholders." bgImage={true} bgImagePath="/Resources.jpg" />
       <section className="section section-tight">
         <div className="container">
           <div className="filter-row">{categories.map((category) => <button className={active === category ? "filter-pill active" : "filter-pill"} key={category} onClick={() => setActive(category)} type="button">{category}</button>)}</div>
@@ -1113,7 +1113,7 @@ function DownloadsPage() {
 function ResourcesPage() {
   return (
     <>
-      <PageHero label="Resources" tone="pink" title={<>Spectral <GradientText className="grad-industry">Knowledge</GradientText> Library</>} description="Practical guides for growers, lighting engineers, and researchers working with plant light data." bgImage={true} bgImagePath="/Resources.jpg" />
+      <PageHero label="Resources" tone="pink" title={<>Spectral <GradientText className="grad-industry">Knowledge</GradientText> Library</>} description="Practical guides for growers, lighting engineers, and researchers working with plant light data." bgImage={true} bgImagePath="/Support.jpg" />
       <section className="section section-tight">
         <div className="container resource-grid">
           {articles.map((article, index) => (
