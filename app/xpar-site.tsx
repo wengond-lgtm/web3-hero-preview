@@ -861,7 +861,7 @@ function IndustrySection() {
 }
 
 function HomePage() {
-  return <><HeroSection /><TechSection /><ProductShowcase /><CalibrationSection /><IndustrySection /></>;
+  return <><HeroSection /><TechSection /><ProductShowcase /><IndustrySection /><CalibrationSection /></>;
 }
 
 function PageHero({ label, title, description, tone = "indigo", bgImage = false, bgImagePath, bgImagePathMobile }: { label: string; title: ReactNode; description: string; tone?: "indigo" | "cyan" | "green" | "yellow" | "pink"; bgImage?: boolean; bgImagePath?: string; bgImagePathMobile?: string }) {
