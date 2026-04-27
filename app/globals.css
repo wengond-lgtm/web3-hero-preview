@@ -1000,6 +1000,10 @@ input, textarea, select { font-family: inherit; }
 .industry-card:hover .industry-card-image {
   opacity: 1;
 }
+.industry-card:nth-child(3) .industry-card-image {
+  object-position: left;
+  transform: translateX(-80px);
+}
 
 /* ─── Page Hero (inner pages) ───────────────────────────────── */
 .page-hero {
