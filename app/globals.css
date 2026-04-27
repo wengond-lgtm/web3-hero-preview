@@ -1004,10 +1004,10 @@ input, textarea, select { font-family: inherit; }
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 10%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 10%, transparent 100%);
 }
-.page-hero h1 { font-size: clamp(28px, 3.5vw, 44px); letter-spacing: -1.5px; margin-bottom: 12px; }
-.page-hero p { font-size: 16px; line-height: 1.6; color: var(--text-body); max-width: 560px; }
+.page-hero h1 { font-size: clamp(28px, 3.5vw, 44px); letter-spacing: -1.5px; margin-bottom: 12px; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.page-hero p { font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.9); max-width: 560px; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
 .page-hero .section-pill { display: inline-flex; }
-.page-hero > .container { padding: 40px 0; }
+.page-hero > .container { padding: 40px 0; position: relative; z-index: 2; }
 @media (max-width: 768px) {
   .page-hero h1 { font-size: clamp(24px, 5vw, 32px); margin-bottom: 8px; }
   .page-hero p { font-size: 14px; max-width: 100%; }
@@ -1020,22 +1020,22 @@ input, textarea, select { font-family: inherit; }
 }
 .page-hero-bg {
   background-image: url('/OurInstruments.jpg');
-  background-size: 100% auto;
-  background-position: center top;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   border-bottom: none;
 }
 @media (max-width: 768px) {
   .page-hero-bg {
-    background-size: 100% auto;
-    background-position: center top;
+    background-size: cover;
+    background-position: center;
   }
 }
 @media (max-width: 480px) {
   .page-hero-bg {
-    background-size: 100% auto;
-    background-position: center top;
+    background-size: cover;
+    background-position: center;
   }
 }
 .page-hero-bg::before {
