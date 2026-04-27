@@ -1046,6 +1046,7 @@ input, textarea, select { font-family: inherit; }
   .page-hero-bg {
     background-size: contain;
     background-position: center;
+    background-image: var(--mobile-bg-image, inherit) !important;
   }
 }
 .page-hero-bg::before {

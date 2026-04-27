@@ -865,8 +865,11 @@ function HomePage() {
   return <><HeroSection /><TechSection /><ProductShowcase /><CalibrationSection /><IndustrySection /></>;
 }
 
-function PageHero({ label, title, description, tone = "indigo", bgImage = false, bgImagePath }: { label: string; title: ReactNode; description: string; tone?: "indigo" | "cyan" | "green" | "yellow" | "pink"; bgImage?: boolean; bgImagePath?: string }) {
-  const style = bgImage && bgImagePath ? { backgroundImage: `url('${bgImagePath}')` } : undefined;
+function PageHero({ label, title, description, tone = "indigo", bgImage = false, bgImagePath, bgImagePathMobile }: { label: string; title: ReactNode; description: string; tone?: "indigo" | "cyan" | "green" | "yellow" | "pink"; bgImage?: boolean; bgImagePath?: string; bgImagePathMobile?: string }) {
+  const style = bgImage && bgImagePath ? {
+    backgroundImage: `url('${bgImagePath}')`,
+    ...(bgImagePathMobile ? { "--mobile-bg-image": `url('${bgImagePathMobile}')` } as CSSProperties : {})
+  } : undefined;
   return (
     <section className={`page-hero ${bgImage ? "page-hero-bg" : ""}`} style={style}>
       <div className="container">
@@ -883,7 +886,7 @@ function PageHero({ label, title, description, tone = "indigo", bgImage = false,
 function ProductsPage() {
   return (
     <>
-      <PageHero label="Products" tone="green" title={<>Our <GradientText className="grad-products">Instruments</GradientText></>} description="Explore portable spectrometers engineered for growers, lighting engineers, and agricultural researchers." bgImage={true} bgImagePath="/Products.jpg" />
+      <PageHero label="Products" tone="green" title={<>Our <GradientText className="grad-products">Instruments</GradientText></>} description="Explore portable spectrometers engineered for growers, lighting engineers, and agricultural researchers." bgImage={true} bgImagePath="/Products.jpg" bgImagePathMobile="/Products-p.jpg" />
       <section className="section section-tight"><div className="container product-grid">{products.map((product, index) => <ProductCard product={product} index={index} key={product.slug} />)}</div></section>
     </>
   );
@@ -964,7 +967,7 @@ function AboutPage() {
   ];
   return (
     <>
-      <PageHero label="About" title={<>About <GradientText className="grad-hero">XPAR Instruments</GradientText></>} description="To master the light is to master the harvest." bgImage={true} bgImagePath="/About.jpg" />
+      <PageHero label="About" title={<>About <GradientText className="grad-hero">XPAR Instruments</GradientText></>} description="To master the light is to master the harvest." bgImage={true} bgImagePath="/About.jpg" bgImagePathMobile="/About-p.jpg" />
       <section className="section section-tight">
         <div className="container about-stack">
           {blocks.map((block, index) => (
@@ -1055,7 +1058,7 @@ function CertificatePage() {
   };
   return (
     <>
-      <PageHero label="Support" tone="cyan" title={<>Certificate <GradientText className="grad-cyan">Verification</GradientText></>} description="Verify a device calibration certificate by entering the instrument serial number." bgImage={true} bgImagePath="/Resources.jpg" />
+      <PageHero label="Support" tone="cyan" title={<>Certificate <GradientText className="grad-cyan">Verification</GradientText></>} description="Verify a device calibration certificate by entering the instrument serial number." bgImage={true} bgImagePath="/Resources.jpg" bgImagePathMobile="/Resources-p.jpg" />
       <section className="section section-tight">
         <div className="container support-layout">
           <Reveal>
@@ -1099,7 +1102,7 @@ function DownloadsPage() {
   const visibleDownloads = active === "All" ? downloads : downloads.filter((file) => file.type === active);
   return (
     <>
-      <PageHero label="Support" tone="cyan" title={<>Download <GradientText className="grad-cyan">Center</GradientText></>} description="Access datasheets, manuals, calibration documentation, and software placeholders." bgImage={true} bgImagePath="/Resources.jpg" />
+      <PageHero label="Support" tone="cyan" title={<>Download <GradientText className="grad-cyan">Center</GradientText></>} description="Access datasheets, manuals, calibration documentation, and software placeholders." bgImage={true} bgImagePath="/Resources.jpg" bgImagePathMobile="/Resources-p.jpg" />
       <section className="section section-tight">
         <div className="container">
           <div className="filter-row">{categories.map((category) => <button className={active === category ? "filter-pill active" : "filter-pill"} key={category} onClick={() => setActive(category)} type="button">{category}</button>)}</div>
@@ -1113,7 +1116,7 @@ function DownloadsPage() {
 function ResourcesPage() {
   return (
     <>
-      <PageHero label="Resources" tone="pink" title={<>Spectral <GradientText className="grad-industry">Knowledge</GradientText> Library</>} description="Practical guides for growers, lighting engineers, and researchers working with plant light data." bgImage={true} bgImagePath="/Support.jpg" />
+      <PageHero label="Resources" tone="pink" title={<>Spectral <GradientText className="grad-industry">Knowledge</GradientText> Library</>} description="Practical guides for growers, lighting engineers, and researchers working with plant light data." bgImage={true} bgImagePath="/Support.jpg" bgImagePathMobile="/Support-p.jpg" />
       <section className="section section-tight">
         <div className="container resource-grid">
           {articles.map((article, index) => (
