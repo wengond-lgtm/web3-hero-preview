@@ -992,10 +992,11 @@ input, textarea, select { font-family: inherit; }
 .page-hero .section-pill { display: inline-flex; }
 .page-hero-bg {
   background-image: url('/OurInstruments.jpg');
-  background-size: contain;
-  background-position: center top;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  aspect-ratio: 1 / 1;
 }
 .page-hero-bg::before {
   background-color: rgba(0, 0, 0, 0.5);
