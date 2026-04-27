@@ -975,7 +975,7 @@ input, textarea, select { font-family: inherit; }
   margin-top: var(--nav-h);
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--border-subtle);
+  border: none;
   aspect-ratio: 6 / 1;
   display: flex;
   align-items: center;
