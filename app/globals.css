@@ -972,6 +972,7 @@ input, textarea, select { font-family: inherit; }
 /* ─── Page Hero (inner pages) ───────────────────────────────── */
 .page-hero {
   padding: 0;
+  margin-top: var(--nav-h);
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--border-subtle);
