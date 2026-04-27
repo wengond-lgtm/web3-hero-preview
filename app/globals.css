@@ -1001,9 +1001,10 @@ input, textarea, select { font-family: inherit; }
   background-position: center 65px;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  border-bottom: none;
 }
 .page-hero-bg::before {
-  display: none;
+  display: none !important;
 }
 .page-hero-bg .container {
   position: relative;
