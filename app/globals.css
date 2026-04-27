@@ -971,10 +971,14 @@ input, textarea, select { font-family: inherit; }
 
 /* ─── Page Hero (inner pages) ───────────────────────────────── */
 .page-hero {
-  padding: calc(var(--nav-h) + 60px) 0 72px;
+  padding: 0;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--border-subtle);
+  aspect-ratio: 6 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .page-hero::before {
   content: '';
@@ -987,9 +991,10 @@ input, textarea, select { font-family: inherit; }
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 10%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 10%, transparent 100%);
 }
-.page-hero h1 { font-size: clamp(32px, 4.5vw, 52px); letter-spacing: -1.5px; margin-bottom: 16px; }
-.page-hero p { font-size: 18px; line-height: 1.7; color: var(--text-body); max-width: 560px; }
+.page-hero h1 { font-size: clamp(28px, 3.5vw, 44px); letter-spacing: -1.5px; margin-bottom: 12px; }
+.page-hero p { font-size: 16px; line-height: 1.6; color: var(--text-body); max-width: 560px; }
 .page-hero .section-pill { display: inline-flex; }
+.page-hero > .container { padding: 40px 0; }
 .page-hero-bg {
   background-image: url('/OurInstruments.jpg');
   background-size: cover;
