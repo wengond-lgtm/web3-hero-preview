@@ -865,9 +865,10 @@ function HomePage() {
   return <><HeroSection /><TechSection /><ProductShowcase /><CalibrationSection /><IndustrySection /></>;
 }
 
-function PageHero({ label, title, description, tone = "indigo", bgImage = false }: { label: string; title: ReactNode; description: string; tone?: "indigo" | "cyan" | "green" | "yellow" | "pink"; bgImage?: boolean }) {
+function PageHero({ label, title, description, tone = "indigo", bgImage = false, bgImagePath }: { label: string; title: ReactNode; description: string; tone?: "indigo" | "cyan" | "green" | "yellow" | "pink"; bgImage?: boolean; bgImagePath?: string }) {
+  const style = bgImage && bgImagePath ? { backgroundImage: `url('${bgImagePath}')` } : undefined;
   return (
-    <section className={`page-hero ${bgImage ? "page-hero-bg" : ""}`}>
+    <section className={`page-hero ${bgImage ? "page-hero-bg" : ""}`} style={style}>
       <div className="container">
         <Reveal>
           <span className={`section-pill ${tone}`}>{label}</span>
@@ -882,7 +883,7 @@ function PageHero({ label, title, description, tone = "indigo", bgImage = false 
 function ProductsPage() {
   return (
     <>
-      <PageHero label="Products" tone="green" title={<>Our <GradientText className="grad-products">Instruments</GradientText></>} description="Explore portable spectrometers engineered for growers, lighting engineers, and agricultural researchers." bgImage={true} />
+      <PageHero label="Products" tone="green" title={<>Our <GradientText className="grad-products">Instruments</GradientText></>} description="Explore portable spectrometers engineered for growers, lighting engineers, and agricultural researchers." bgImage={true} bgImagePath="/Products.jpg" />
       <section className="section section-tight"><div className="container product-grid">{products.map((product, index) => <ProductCard product={product} index={index} key={product.slug} />)}</div></section>
     </>
   );
@@ -963,7 +964,7 @@ function AboutPage() {
   ];
   return (
     <>
-      <PageHero label="About" title={<>About <GradientText className="grad-hero">XPAR Instruments</GradientText></>} description="To master the light is to master the harvest." bgImage={true} />
+      <PageHero label="About" title={<>About <GradientText className="grad-hero">XPAR Instruments</GradientText></>} description="To master the light is to master the harvest." bgImage={true} bgImagePath="/About.jpg" />
       <section className="section section-tight">
         <div className="container about-stack">
           {blocks.map((block, index) => (
@@ -1054,7 +1055,7 @@ function CertificatePage() {
   };
   return (
     <>
-      <PageHero label="Support" tone="cyan" title={<>Certificate <GradientText className="grad-cyan">Verification</GradientText></>} description="Verify a device calibration certificate by entering the instrument serial number." bgImage={true} />
+      <PageHero label="Support" tone="cyan" title={<>Certificate <GradientText className="grad-cyan">Verification</GradientText></>} description="Verify a device calibration certificate by entering the instrument serial number." bgImage={true} bgImagePath="/Support.jpg" />
       <section className="section section-tight">
         <div className="container support-layout">
           <Reveal>
@@ -1098,7 +1099,7 @@ function DownloadsPage() {
   const visibleDownloads = active === "All" ? downloads : downloads.filter((file) => file.type === active);
   return (
     <>
-      <PageHero label="Support" tone="cyan" title={<>Download <GradientText className="grad-cyan">Center</GradientText></>} description="Access datasheets, manuals, calibration documentation, and software placeholders." bgImage={true} />
+      <PageHero label="Support" tone="cyan" title={<>Download <GradientText className="grad-cyan">Center</GradientText></>} description="Access datasheets, manuals, calibration documentation, and software placeholders." bgImage={true} bgImagePath="/Support.jpg" />
       <section className="section section-tight">
         <div className="container">
           <div className="filter-row">{categories.map((category) => <button className={active === category ? "filter-pill active" : "filter-pill"} key={category} onClick={() => setActive(category)} type="button">{category}</button>)}</div>

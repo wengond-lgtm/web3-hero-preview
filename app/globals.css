@@ -1020,7 +1020,6 @@ input, textarea, select { font-family: inherit; }
   .page-hero > .container { padding: 20px 0; }
 }
 .page-hero-bg {
-  background-image: url('/OurInstruments.jpg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
