@@ -1005,6 +1005,8 @@ input, textarea, select { font-family: inherit; }
     min-height: 420px;
     border: none !important;
     border-bottom: none !important;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
   }
 }
 .page-hero::before {
@@ -1030,7 +1032,7 @@ input, textarea, select { font-family: inherit; }
 @media (max-width: 480px) {
   .page-hero h1 { font-size: clamp(20px, 6vw, 28px); margin-bottom: 6px; }
   .page-hero p { font-size: 13px; }
-  .page-hero > .container { padding: 20px 1.5rem; }
+  .page-hero > .container { padding: 20px 20px; max-width: 100%; }
 }
 .page-hero-bg {
   background-size: contain;
