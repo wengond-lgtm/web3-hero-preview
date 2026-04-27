@@ -1020,7 +1020,7 @@ function ContactPage() {
               {status === "error" ? <p className="form-status error">Submission failed. Please try again.</p> : null}
             </form>
           </Reveal>
-          <Reveal delay={0.1}><aside className="contact-card"><h2>XPAR Instruments</h2><p>Professional spectral measurement tools for greenhouse growers, vertical farms, lighting engineers, and agricultural researchers.</p><dl><dt>Email</dt><dd>contact@xpar-instruments.example</dd><dt>Response time</dt><dd>Within 1-2 business days</dd><dt>Support</dt><dd>Certificate verification and downloads are available online.</dd></dl></aside></Reveal>
+          <Reveal delay={0.1}><aside className="contact-card"><h2>XPAR Instruments</h2><p>Professional spectral measurement tools for greenhouse growers, vertical farms, lighting engineers, and agricultural researchers.</p><dl><dt>Email</dt><dd>victor@fafagreens.com</dd><dt>Response time</dt><dd>Within 1-2 business days</dd><dt>Support</dt><dd>Certificate verification and downloads are available online.</dd></dl></aside></Reveal>
         </div>
       </section>
     </>
