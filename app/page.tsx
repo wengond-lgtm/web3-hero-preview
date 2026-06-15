@@ -4,7 +4,7 @@ import XparSite from "./xpar-site";
 export const metadata: Metadata = {
   title: "Wide Spectrum Intelligence",
   description:
-    "Wide spectrum intelligence for explosive crop performance, from 350-1050 nm with 1 nm spectral resolution."
+    "XPAR PAR sensor and agricultural spectrometer tools for grow light measurement, including the X200 spectrometer with 350-1050 nm coverage and 1 nm resolution."
 };
 
 export default function Page() {

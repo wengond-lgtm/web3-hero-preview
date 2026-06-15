@@ -1,20 +1,36 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { seoKeywords, siteUrl } from "./seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://xpar-instruments.example"),
+  metadataBase: new URL(siteUrl),
+  applicationName: "XPAR Instruments",
   title: {
     default: "XPAR Instruments | Wide Spectrum Intelligence",
     template: "%s | XPAR Instruments"
   },
   description:
-    "Professional spectral measurement instruments for high-performance horticulture, plant lighting validation, and optical calibration.",
+    "XPAR Instruments builds PAR sensors, X200 spectrometers, and agricultural spectrometer tools for horticulture lighting validation and optical calibration.",
+  keywords: seoKeywords,
+  category: "horticulture lighting measurement",
+  classification: "PAR sensor, spectrometer, agricultural spectrometer",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
+  },
   openGraph: {
     title: "XPAR Instruments",
     description:
-      "Next-generation spectral measurement tools for the global horticulture lighting industry.",
-    url: "https://xpar-instruments.example",
+      "PAR sensors, X200 spectrometers, and agricultural spectrometer tools for the global horticulture lighting industry.",
+    url: siteUrl,
     siteName: "XPAR Instruments",
     images: ["/og-image.png"],
     locale: "en_US",
