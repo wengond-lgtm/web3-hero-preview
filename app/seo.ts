@@ -15,13 +15,10 @@ export const seoKeywords = [
   "grow light sensor"
 ];
 
+const defaultSiteUrl = "https://www.xparlab.com";
+
 export function getSiteUrl() {
-  const rawUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    process.env.SITE_URL ||
-    process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-    process.env.VERCEL_URL ||
-    "https://xpar-instruments.example";
+  const rawUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || defaultSiteUrl;
 
   const url = rawUrl.startsWith("http") ? rawUrl : `https://${rawUrl}`;
 
