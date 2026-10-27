@@ -1037,59 +1037,26 @@ function SupportVideoSection() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const currentVideoUrl = useRef<string | null>(null);
-
-  useEffect(() => {
-    return () => {
-      if (currentVideoUrl.current) URL.revokeObjectURL(currentVideoUrl.current);
-    };
-  }, []);
 
   const unlock = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setBusy(true);
     setError("");
-    if (!window.crypto?.subtle) {
-      setError("This browser cannot play the protected video. Please use an up-to-date browser.");
-      setBusy(false);
-      return;
-    }
-
-    let encrypted: Uint8Array;
     try {
-      const response = await fetch("/support-video.enc");
-      if (!response.ok) throw new Error("Video download failed");
-      encrypted = new Uint8Array(await response.arrayBuffer());
-    } catch {
-      setError("Video could not be downloaded. Please try again.");
-      setBusy(false);
-      return;
-    }
-
-    const magic = new TextEncoder().encode("XPARVID1");
-    if (encrypted.length < 52 || !magic.every((byte, index) => encrypted[index] === byte)) {
-      setError("Video file is unavailable or damaged.");
-      setBusy(false);
-      return;
-    }
-
-    try {
-      const keyMaterial = await window.crypto.subtle.importKey(
-        "raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveKey"]
-      );
-      const key = await window.crypto.subtle.deriveKey(
-        { name: "PBKDF2", salt: encrypted.slice(8, 24), iterations: 310_000, hash: "SHA-256" },
-        keyMaterial, { name: "AES-GCM", length: 256 }, false, ["decrypt"]
-      );
-      const plaintext = await window.crypto.subtle.decrypt(
-        { name: "AES-GCM", iv: encrypted.slice(24, 36) }, key, encrypted.slice(36)
-      );
-      const url = URL.createObjectURL(new Blob([plaintext], { type: "video/mp4" }));
-      currentVideoUrl.current = url;
-      setVideoUrl(url);
+      const response = await fetch("/api/support-video/access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password })
+      });
+      if (!response.ok) {
+        setError(response.status === 401 ? "Incorrect password. Please try again." : "Video access is temporarily unavailable.");
+        return;
+      }
+      const data = await response.json() as { url: string };
+      setVideoUrl(data.url);
       setPassword("");
     } catch {
-      setError("Incorrect password. Please try again.");
+      setError("Unable to connect. Please try again.");
     } finally {
       setBusy(false);
     }
@@ -1098,8 +1065,6 @@ function SupportVideoSection() {
   const lock = () => {
     setVideoUrl(null);
     setError("");
-    if (currentVideoUrl.current) URL.revokeObjectURL(currentVideoUrl.current);
-    currentVideoUrl.current = null;
   };
 
   return (

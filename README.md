@@ -4,9 +4,9 @@ Next.js 14 website for XPAR Instruments. Run `npm.cmd run dev` on Windows and op
 
 ## Support Video
 
-The Support page at `/support/certificate` contains a password-protected product video. Visitors enter the password on the page; their browser downloads and decrypts the encrypted video before playback. No Vercel environment variable is needed for viewing.
+The Support page at `/support/certificate` contains a password-gated product video. The site's `/api/support-video/access` route checks the entered password and returns the ImageKit video URL. The browser then streams the video directly from ImageKit. No Vercel environment variable is needed.
 
-The public repository contains only `public/support-video.enc` (AES-256-GCM, with a PBKDF2-SHA256 derived key). The original `ios 0923.mp4` remains local at `private/videos/ios 0923.mp4` and is gitignored. To replace or re-encrypt the video, set `XPAR_VIDEO_PASSWORD` locally and run `node scripts/encrypt-support-video.mjs`; commit the resulting encrypted file, never the original MP4 or password. The encrypted file can be downloaded directly and a weak password can be guessed offline, so use private storage and server authorization if stronger access control is needed.
+The ImageKit video URL is public. The website password hides the player from casual visitors, but anyone with the direct URL can watch without it. Use a private ImageKit asset and signed URLs if the video must be genuinely access-controlled. The local original at `private/videos/ios 0923.mp4` is gitignored and is not used by the deployed site.
 
 ## Commands
 
