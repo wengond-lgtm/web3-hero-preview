@@ -28,6 +28,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# Keep the plaintext customer video out of the public source repository.
+/private/videos/
+
 # vercel
 .vercel
 

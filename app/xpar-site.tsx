@@ -2,9 +2,10 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "framer-motion";
+import { LockKeyhole, Play, Lock } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type FormEvent, type ReactNode } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -226,7 +227,7 @@ function Navbar() {
 function Footer() {
   const columns = [
     { title: "Products", links: [{ label: "X-100", href: "/products/x100" }, { label: "X-200", href: "/products/x200" }] },
-    { title: "Support", links: [{ label: "Certificate verification", href: "/support/certificate" }, { label: "Downloads", href: "/support/downloads" }] },
+    { title: "Support", links: [{ label: "Product video", href: "/support/certificate#product-video" }, { label: "Certificate verification", href: "/support/certificate" }, { label: "Downloads", href: "/support/downloads" }] },
     { title: "Company", links: [{ label: "About", href: "/about" }, { label: "Resources", href: "/resources" }, { label: "Contact", href: "/contact" }] }
   ];
   return (
@@ -1031,6 +1032,118 @@ function ContactPage() {
 
 type CertificateResult = { found: boolean; sn?: string };
 
+function SupportVideoSection() {
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [password, setPassword] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const currentVideoUrl = useRef<string | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (currentVideoUrl.current) URL.revokeObjectURL(currentVideoUrl.current);
+    };
+  }, []);
+
+  const unlock = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setBusy(true);
+    setError("");
+    if (!window.crypto?.subtle) {
+      setError("This browser cannot play the protected video. Please use an up-to-date browser.");
+      setBusy(false);
+      return;
+    }
+
+    let encrypted: Uint8Array;
+    try {
+      const response = await fetch("/support-video.enc");
+      if (!response.ok) throw new Error("Video download failed");
+      encrypted = new Uint8Array(await response.arrayBuffer());
+    } catch {
+      setError("Video could not be downloaded. Please try again.");
+      setBusy(false);
+      return;
+    }
+
+    const magic = new TextEncoder().encode("XPARVID1");
+    if (encrypted.length < 52 || !magic.every((byte, index) => encrypted[index] === byte)) {
+      setError("Video file is unavailable or damaged.");
+      setBusy(false);
+      return;
+    }
+
+    try {
+      const keyMaterial = await window.crypto.subtle.importKey(
+        "raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveKey"]
+      );
+      const key = await window.crypto.subtle.deriveKey(
+        { name: "PBKDF2", salt: encrypted.slice(8, 24), iterations: 310_000, hash: "SHA-256" },
+        keyMaterial, { name: "AES-GCM", length: 256 }, false, ["decrypt"]
+      );
+      const plaintext = await window.crypto.subtle.decrypt(
+        { name: "AES-GCM", iv: encrypted.slice(24, 36) }, key, encrypted.slice(36)
+      );
+      const url = URL.createObjectURL(new Blob([plaintext], { type: "video/mp4" }));
+      currentVideoUrl.current = url;
+      setVideoUrl(url);
+      setPassword("");
+    } catch {
+      setError("Incorrect password. Please try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const lock = () => {
+    setVideoUrl(null);
+    setError("");
+    if (currentVideoUrl.current) URL.revokeObjectURL(currentVideoUrl.current);
+    currentVideoUrl.current = null;
+  };
+
+  return (
+    <section className="section section-tight support-video-section" id="product-video">
+      <div className="container">
+        <div className="support-video-heading">
+          <div>
+            <span className="section-pill cyan">Product guide</span>
+            <h2>XPAR Product <GradientText className="grad-cyan">Video</GradientText></h2>
+            <p>Watch the XPAR product usage video.</p>
+          </div>
+          {videoUrl ? <button className="support-video-lock" type="button" onClick={lock}><Lock size={16} /> Lock video</button> : null}
+        </div>
+        <div className="support-video-frame">
+          {videoUrl ? (
+            <video
+              className="support-video-player"
+              controls
+              playsInline
+              preload="metadata"
+              poster="/X-200_1.png"
+              src={videoUrl}
+              onError={() => setError("Video could not be loaded. Please refresh and try again.")}
+            >Your browser does not support video playback.</video>
+          ) : (
+            <form className="support-video-form" onSubmit={unlock}>
+              <span className="support-video-icon"><LockKeyhole size={28} strokeWidth={1.5} /></span>
+              <h3>Enter your access password</h3>
+              <p>This product video is available to XPAR customers.</p>
+              <label className="form-field wide" htmlFor="support-video-password"><span>Password</span></label>
+              <div className="support-video-input-row">
+                <input id="support-video-password" type="password" autoComplete="off" required disabled={busy} value={password} onChange={(event) => setPassword(event.target.value)} />
+                <button className="button primary" disabled={busy} type="submit"><Play size={16} fill="currentColor" /> {busy ? "Opening video..." : "Watch video"}</button>
+              </div>
+              {error ? <p className="form-status error" role="alert">{error}</p> : null}
+            </form>
+          )}
+        </div>
+        {videoUrl && error ? <p className="form-status error" role="alert">{error}</p> : null}
+      </div>
+    </section>
+  );
+}
+
 function CalibrationCertCard({ sn }: { sn: string }) {
   return (
     <div className="cal-cert-container">
@@ -1057,22 +1170,26 @@ function CertificatePage() {
   };
   return (
     <>
-      <PageHero label="Support" tone="cyan" title={<>Certificate <GradientText className="grad-cyan">Verification</GradientText></>} description="Verify a device calibration certificate by entering the instrument serial number." bgImage={true} bgImagePath="/Resources.jpg" bgImagePathMobile="/Resources-p.jpg" />
+      <PageHero label="Support" tone="cyan" title={<>XPAR <GradientText className="grad-cyan">Support</GradientText></>} description="Watch the product video and verify your device calibration certificate." bgImage={true} bgImagePath="/Resources.jpg" bgImagePathMobile="/Resources-p.jpg" />
+      <SupportVideoSection />
       <section className="section section-tight">
-        <div className="container support-layout">
-          <Reveal>
-            <div className="search-panel">
-              <label className="form-field wide"><span>Serial Number</span><input value={serialNumber} onChange={(event) => setSerialNumber(event.target.value)} placeholder="e.g. SP0226030002" /></label>
-              <button className="button primary" type="button" disabled={loading} onClick={() => lookup()}>{loading ? "Searching..." : "Search Certificate"}</button>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="result-panel">
-              {!result ? <p>Enter a serial number and click "Search Certificate" to verify your device's calibration status.</p> : result.found && result.sn ? (
-                <CalibrationCertCard sn={result.sn} />
-              ) : <><span className="result-badge muted">Not found</span><p>No certificate matched this serial number. Please verify the serial number and try again.</p></>}
-            </div>
-          </Reveal>
+        <div className="container">
+          <h2 className="support-certificate-title">Certificate <GradientText className="grad-cyan">Verification</GradientText></h2>
+          <div className="support-layout">
+            <Reveal>
+              <div className="search-panel">
+                <label className="form-field wide"><span>Serial Number</span><input value={serialNumber} onChange={(event) => setSerialNumber(event.target.value)} placeholder="e.g. SP0226030002" /></label>
+                <button className="button primary" type="button" disabled={loading} onClick={() => lookup()}>{loading ? "Searching..." : "Search Certificate"}</button>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="result-panel">
+                {!result ? <p>Enter a serial number and click "Search Certificate" to verify your device's calibration status.</p> : result.found && result.sn ? (
+                  <CalibrationCertCard sn={result.sn} />
+                ) : <><span className="result-badge muted">Not found</span><p>No certificate matched this serial number. Please verify the serial number and try again.</p></>}
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
       <SupportDownloadsSection />
