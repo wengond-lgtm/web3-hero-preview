@@ -1073,7 +1073,7 @@ function SupportVideoSection() {
         <div className="support-video-heading">
           <div>
             <span className="section-pill cyan">Product guide</span>
-            <h2>XPAR Product <GradientText className="grad-cyan">Video</GradientText></h2>
+            <h2>X-200 Tutorial <GradientText className="grad-cyan">Video</GradientText></h2>
             <p>Watch the XPAR product usage video.</p>
           </div>
           {videoUrl ? <button className="support-video-lock" type="button" onClick={lock}><Lock size={16} /> Lock video</button> : null}
